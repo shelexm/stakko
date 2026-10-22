@@ -1,0 +1,25 @@
+---
+import SectionHead from '../SectionHead.astro';
+import { t, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang).approach;
+---
+<section class="sec line" id="approach" aria-labelledby="approach-title">
+  <div class="wrap">
+    <SectionHead num="04" kicker={d.kicker} title={d.title} titleId="approach-title" sub={d.sub} />
+    <ol class="steps">
+      {d.steps.map((s, i) => (
+        <li class={`step reveal${i ? ` s${i}` : ''}`}>
+          <span class="n mono">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

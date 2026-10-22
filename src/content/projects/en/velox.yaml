@@ -1,0 +1,144 @@
+lang: en
+order: 1
+featured: true
+title: VÉLOX Detailing Studio
+category: Web product
+role: Full-stack development
+description: A website, online booking, admin panel and Telegram bot for a car detailing studio. Every channel shares one database and one set of booking rules.
+chips: [Website, Online booking, Admin panel, Telegram bot]
+tags: [Python, FastAPI, PostgreSQL, aiogram 3, Docker]
+preview:
+  kind: shot
+  image: ../../../assets/velox/home.png
+  url: velox.stakko.online
+  alt: VÉLOX website home page
+links:
+  demo: https://velox.stakko.online
+  github: https://github.com/shelexm/velox-detailing
+  bot: https://t.me/velox_detailing_bot
+
+case:
+  seoTitle: VÉLOX Detailing Studio · case study · STAKKO
+  seoDescription: 'Case study: a website, online booking, admin panel and Telegram bot for a car detailing studio, built with FastAPI, PostgreSQL and aiogram 3.'
+  eyebrow: CASE 01 · WEB PRODUCT FOR A DETAILING STUDIO
+  titleA: VÉLOX
+  titleB: Detailing Studio
+  lead: A website, online booking, admin panel and Telegram bot for a car detailing studio. Every channel shares one database and one set of booking rules.
+  meta:
+    - { k: Role, v: Full-stack development }
+    - { k: Scope, v: Website · Admin panel · Bot }
+    - { k: Core, v: Python · FastAPI · PostgreSQL }
+    - { k: Product language, v: Russian }
+  heroUrl: velox.stakko.online
+  hero: { image: ../../../assets/velox/home.png, label: 'Home page, desktop', size: 1920 × 1080, ratio: 16x9 }
+  sections:
+    - id: task
+      title: The problem
+      big: 'The studio needed to take bookings from both the website and Telegram, manage staff schedules and services, update site content without a developer, and make sure the same time slot can’t be taken through two different channels.'
+
+    - title: The solution
+      text: 'A single product built on FastAPI and PostgreSQL. The website, admin panel and Telegram bot share one database and one set of booking rules. The architecture supports multiple studios: every booking belongs to its studio.'
+      arch:
+        aria: 'Diagram: the website, admin panel, Telegram bot and Mini App work through a shared backend and one database'
+        top:
+          - { k: Clients, b: Website, s: Jinja2 · JavaScript }
+          - { k: Studio, b: Admin panel, s: Roles and access }
+          - { k: Clients and studio, b: Telegram bot and Mini App, s: aiogram 3 }
+        core: { k: Backend, b: FastAPI · shared booking rules, s: API · service layer · Pydantic 2 }
+        db: { k: Data, b: PostgreSQL 17, s: SQLAlchemy 2 async · Alembic migrations }
+        caption: 'Based on the repository structure: app/web, app/bot, app/api, app/services, app/models.'
+
+    - title: Client-facing website
+      text: 'A responsive studio website: services and prices, before/after work, reviews, gift certificates and contacts. The owner edits texts, photos and prices in the admin panel. Screenshots show the product in Russian, its original language.'
+      gallery:
+        layout: gal3
+        shots:
+          - { image: ../../../assets/velox/prices.png, label: Services and prices, size: 1440 × 900, ratio: 16x10 }
+          - { image: ../../../assets/velox/works.png, label: Before/after gallery, size: 1440 × 900, ratio: 16x10 }
+          - { image: ../../../assets/velox/mobile.png, label: Mobile version, size: 390 × 844, ratio: 9x19 }
+
+    - title: Online booking
+      flow:
+        steps:
+          - { b: Service, d: Chosen from the studio catalogue }
+          - { b: Specialist, d: 'Picked by the client where the service allows it' }
+          - { b: Time, d: Only available slots }
+          - { b: Contact details, d: 'Name, phone, car model optional' }
+        result: { b: Confirmation, d: 'Booking number, calendar file and a cancellation page available until the deadline' }
+      after: 'The website, admin panel and bot validate bookings against the same rules; overlapping slots are additionally guarded by database-level constraints.'
+      gallery:
+        layout: single
+        shots:
+          - { image: ../../../assets/velox/booking.png, label: 'Online booking: picking a date and time', size: 1440 × 900, ratio: 16x10 }
+
+    - title: Admin panel
+      text: 'The studio’s workspace, from schedules and staff workload to site content. Access is split by role.'
+      list:
+        - Schedules and staff workload
+        - Services, prices and specialists
+        - Clients and bookings
+        - Site content, media and reviews
+        - Settings and staff access
+        - 'Roles: owner, administrator, specialist'
+        - Client data deletion on request (Russian Federal Law 152-FZ)
+        - Daily backups
+      gallery:
+        layout: gal2
+        shots:
+          - { image: ../../../assets/velox/admin-schedule.png, label: 'Admin panel: the day’s bookings by bay', size: 1440 × 900, ratio: 16x10 }
+          - { image: ../../../assets/velox/admin-services.png, label: 'Admin panel: services and prices', size: 1440 × 900, ratio: 16x10 }
+
+    - title: Telegram bot
+      panels:
+        - title: For clients
+          items:
+            - Book a service
+            - Mini App with a calendar of free slots
+            - “My bookings” section
+            - Reschedule or cancel
+            - Ask the administrator a question
+            - Reminders 24 hours and 2 hours ahead
+        - title: For the studio
+          items:
+            - New requests arrive in the administrators’ chat
+            - “Confirm”, “Assign specialist” and “Decline” buttons
+      gallery:
+        layout: galp
+        shots:
+          - { label: 'Bot: booking a service', size: 390 × 844, ratio: 9x19 }
+          - { label: 'Admin chat: new request', size: 390 × 844, ratio: 9x19 }
+
+    - id: stack
+      title: Tech stack
+      stack:
+        - { title: Backend, tags: [Python 3.12, FastAPI, Pydantic 2] }
+        - { title: Data, tags: [PostgreSQL 17, SQLAlchemy 2 async, Alembic] }
+        - { title: Bot, tags: [aiogram 3, Telegram Bot API] }
+        - { title: Interface, tags: [Jinja2, HTML & CSS, JavaScript] }
+        - { title: Media, tags: [Pillow, AVIF, WebP] }
+        - { title: Quality, tags: [pytest, ruff, GitHub Actions] }
+
+    - title: Testing and quality
+      text: 'The pytest suite is split into unit, integration, API and bot tests, with an isolated environment of its own: a separate Docker Compose stack. Code is linted with ruff, and checks run in GitHub Actions.'
+      tags: [tests/unit, tests/integration, tests/api, tests/bot, compose.test.yaml]
+      metrics:
+        - { status: pytest · Oct 22, 2026, value: '219', label: tests, note: 'Fresh run in the isolated stack: all tests pass.' }
+        - { status: pytest-cov · Oct 22, 2026, value: 92%, label: line coverage, note: 'Measured with pytest-cov (coverage.py) over the app package, line coverage.' }
+        - { status: GitHub · Oct 22, 2026, value: '127', label: commits on main, note: 'A supporting indicator of development history, not a quality metric.' }
+
+    - title: Infrastructure and deployment
+      infra:
+        - { k: Docker Compose, text: 'Separate configurations for development, testing and production; memory limits are set for the server.' }
+        - { k: Migrations, text: The database schema is versioned with Alembic. }
+        - { k: Backups, text: 'Daily database and media backups, plus a copy before every update.' }
+        - { k: Documentation, text: 'Installation, updates and backups are covered in `docs/deployment.md`.' }
+        - { k: Personal data, text: 'Client data deletion on request, in line with Russian Federal Law 152-FZ.' }
+      note: 'Server addresses, keys and credentials are not published in this case study.'
+
+    - id: links
+      title: Links
+      links:
+        - { k: Live demo, b: velox.stakko.online, d: Public website and online booking, href: 'https://velox.stakko.online' }
+        - { k: Source code, b: shelexm/velox-detailing, d: PolyForm Noncommercial 1.0.0 license, href: 'https://github.com/shelexm/velox-detailing' }
+        - { k: Telegram bot, b: '@velox_detailing_bot', d: 'Booking, rescheduling and reminders', href: 'https://t.me/velox_detailing_bot' }
+        - { k: Admin panel, b: Demo access on request, d: Message me on Telegram, href: 'https://t.me/shelexm' }

@@ -1,0 +1,11 @@
+lang: ru
+order: 2
+title: English Hub
+category: Веб-приложение · AI
+role: Full-stack разработка
+description: 'Self-hosted приложение для изучения английского: словарь, интервальные повторения по SM-2, грамматика, разговорная практика и AI-репетитор. Запросы к AI выполняются только на сервере.'
+tags: [React, TypeScript, Tailwind CSS, Express, Prisma, PostgreSQL, Anthropic API]
+preview:
+  kind: dash
+links:
+  github: https://github.com/shelexm/english-hub

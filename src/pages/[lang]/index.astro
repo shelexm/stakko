@@ -3,6 +3,12 @@ import '../../styles/home.css';
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Hero from '../../components/Hero.astro';
+import Projects from '../../components/home/Projects.astro';
+import Services from '../../components/home/Services.astro';
+import Stack from '../../components/home/Stack.astro';
+import Approach from '../../components/home/Approach.astro';
+import Work from '../../components/home/Work.astro';
+import Contact from '../../components/home/Contact.astro';
 import Footer from '../../components/Footer.astro';
 import { t, langPaths, type Lang } from '../../i18n';
 
@@ -15,6 +21,12 @@ const d = t(lang);
   <Header lang={lang} />
   <main id="main">
     <Hero lang={lang} />
+    <Projects lang={lang} />
+    <Services lang={lang} />
+    <Stack lang={lang} />
+    <Approach lang={lang} />
+    <Work lang={lang} />
+    <Contact lang={lang} />
   </main>
   <Footer lang={lang} />
 </Base>

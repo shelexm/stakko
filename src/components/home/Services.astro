@@ -1,0 +1,37 @@
+---
+import SectionHead from '../SectionHead.astro';
+import Icon, { type IconName } from '../Icon.astro';
+import { t, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang).services;
+const stagger = ['', ' s1', ' s2'];
+---
+<section class="sec line" id="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <SectionHead num="02" kicker={d.kicker} title={d.title} titleId="services-title" sub={d.sub} />
+    <div class="svc-grid">
+      {d.items.map((s, i) => (
+        <article class={`svc a-${s.acc} reveal${stagger[i % 3]}`} data-spot>
+          <div class="ico"><Icon name={s.icon as IconName} size={24} /></div>
+          <span class="num mono">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <div class="svc-ft">
+            <span class="svc-scope">{s.scope}</span>
+            <span class="price">{s.price.replace(/ /g, ' ')}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="price-note reveal">{d.priceNote}</p>
+    <div class="svc-note reveal">
+      <span>{d.inside}</span>
+      <div class="tags">{d.insideTags.map((tag) => <span class="tag">{tag}</span>)}</div>
+    </div>
+  </div>
+</section>

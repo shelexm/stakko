@@ -1,0 +1,92 @@
+---
+// Card preview, 16:10. A real screenshot in a browser frame, or an interface mockup that depends on the
+// project type: dashboard shell, chat windows or a terminal. Mockups are labelled as such.
+import { Picture } from 'astro:assets';
+import type { Project } from '../lib/projects';
+
+interface Props {
+  project: Project;
+  note: string;
+}
+
+const { project, note } = Astro.props;
+const p = project.preview;
+const bars = [40, 65, 30, 80, 55, 70, 45, 90, 60, 75];
+---
+{p.kind === 'shot' && p.image && (
+  <div class="mk mk-shot">
+    <div class="mk-frame">
+      <div class="mk-bar"><i></i><i></i><i></i><span class="mk-url">{p.url}</span></div>
+      <Picture src={p.image} alt={p.alt ?? ''} widths={[480, 720, 960]} sizes="(max-width: 960px) 92vw, 600px" formats={['avif', 'webp']} loading="lazy" decoding="async" />
+    </div>
+  </div>
+)}
+
+{p.kind === 'web' && (
+  <div class="mk mk-web" aria-hidden="true">
+    <div class="mk-frame">
+      <div class="mk-bar"><i></i><i></i><i></i><span class="mk-url">{p.url}</span></div>
+      <div class="mk-site">
+        <div class="mk-nav"><span class="mk-logo">{project.title}</span><span class="l"></span><span class="l"></span><span class="l"></span></div>
+        <div class="mk-h"><span></span><span></span></div>
+        <div class="mk-p"><span></span><span></span></div>
+        <div class="mk-btns"><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+)}
+
+{p.kind === 'dash' && (
+  <div class="mk mk-dash" aria-hidden="true">
+    <div class="mk-app">
+      <div class="mk-side">
+        <span class="mk-brand">{project.title}</span>
+        <span class="mk-it on"><i></i>Dashboard</span>
+        <span class="mk-it"><i></i>Vocabulary</span>
+        <span class="mk-it"><i></i>Flashcards</span>
+        <span class="mk-it"><i></i>Grammar</span>
+        <span class="mk-it"><i></i>Speaking</span>
+        <span class="mk-it"><i></i>AI Assistant</span>
+        <span class="mk-it"><i></i>Progress</span>
+      </div>
+      <div class="mk-main">
+        <div class="mk-card"><b>Daily plan</b><span class="fill" style="width: 64%"></span><span class="bar"></span></div>
+        <div class="mk-card"><b>Streak</b><span class="bar" style="width: 70%"></span><span class="bar" style="width: 45%"></span></div>
+        <div class="mk-card"><b>XP · Level</b><span class="fill" style="width: 40%"></span><span class="bar"></span></div>
+        <div class="mk-card mk-wide"><b>Review queue</b><div class="mk-rows"><span></span><span></span><span></span></div></div>
+        <div class="mk-card mk-wide"><b>Activity</b><div class="mk-chart">{bars.map((h) => <span style={`height: ${h}%`}></span>)}</div></div>
+      </div>
+    </div>
+  </div>
+)}
+
+{p.kind === 'bot' && (
+  <div class="mk mk-bot" aria-hidden="true">
+    {[0, 1].map((i) => (
+      <div class={`mk-chat${i ? ' lo' : ''}`}>
+        <div class="mk-ch"><span class="mk-ava">{project.title.charAt(0)}</span><span><b>{project.title}</b><small>bot</small></span></div>
+        <div class="mk-msgs">
+          <div class="mk-msg"><span class="ln"></span><span class="ln" style="width: 70%"></span></div>
+          <div class="mk-msg me"><span class="ln" style="width: 60px"></span></div>
+          <div class="mk-kb"><span></span><span></span><span class="w"></span></div>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
+{p.kind === 'api' && (
+  <div class="mk mk-api" aria-hidden="true">
+    <div class="mk-term">
+      <div class="mk-th"><i></i><i></i><i></i><span>{project.title}</span></div>
+      <div class="mk-code">
+        <span><span class="d">$</span> docker compose up -d</span>
+        <span class="c">✓ api   healthy</span>
+        <span><span class="d">GET</span> /health/ready  200</span>
+        <span><span class="d">$</span> <i class="cur"></i></span>
+      </div>
+    </div>
+  </div>
+)}
+
+{p.kind !== 'shot' && <span class="mk-note mono">{note}</span>}

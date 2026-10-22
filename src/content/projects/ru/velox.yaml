@@ -1,0 +1,144 @@
+lang: ru
+order: 1
+featured: true
+title: VÉLOX Detailing Studio
+category: Веб-продукт
+role: Full-stack разработка
+description: Сайт, онлайн-запись, админ-панель и Telegram-бот для студии детейлинга. Все каналы работают с одной базой данных и общими правилами записи.
+chips: [Сайт, Онлайн-запись, Админ-панель, Telegram-бот]
+tags: [Python, FastAPI, PostgreSQL, aiogram 3, Docker]
+preview:
+  kind: shot
+  image: ../../../assets/velox/home.png
+  url: velox.stakko.online
+  alt: Главная страница сайта VÉLOX
+links:
+  demo: https://velox.stakko.online
+  github: https://github.com/shelexm/velox-detailing
+  bot: https://t.me/velox_detailing_bot
+
+case:
+  seoTitle: VÉLOX Detailing Studio · кейс · STAKKO
+  seoDescription: 'Кейс: сайт, онлайн-запись, админ-панель и Telegram-бот для студии детейлинга на FastAPI, PostgreSQL и aiogram 3.'
+  eyebrow: КЕЙС 01 · ВЕБ-ПРОДУКТ ДЛЯ СТУДИИ ДЕТЕЙЛИНГА
+  titleA: VÉLOX
+  titleB: Detailing Studio
+  lead: Сайт, онлайн-запись, админ-панель и Telegram-бот для студии детейлинга. Все каналы работают с одной базой данных и общими правилами записи.
+  meta:
+    - { k: Роль, v: Full-stack разработка }
+    - { k: Состав, v: Сайт · Админ-панель · Бот }
+    - { k: Основа, v: Python · FastAPI · PostgreSQL }
+    - { k: Язык интерфейса, v: Русский }
+  heroUrl: velox.stakko.online
+  hero: { image: ../../../assets/velox/home.png, label: Главная страница, десктоп, size: 1920 × 1080, ratio: 16x9 }
+  sections:
+    - id: task
+      title: Задача
+      big: Студии нужно принимать записи с сайта и из Telegram, вести расписание мастеров и услуги, обновлять контент без разработчика и не допускать, чтобы одно и то же время заняли через разные каналы.
+
+    - title: Решение
+      text: 'Единый продукт на FastAPI и PostgreSQL. Сайт, админ-панель и Telegram-бот используют одну базу данных и общий набор правил записи. Архитектура рассчитана на несколько студий: каждая запись привязана к своей студии.'
+      arch:
+        aria: 'Схема: сайт, админ-панель, Telegram-бот и Mini App работают через общий backend и одну базу данных'
+        top:
+          - { k: Клиенты, b: Сайт, s: Jinja2 · JavaScript }
+          - { k: Студия, b: Админ-панель, s: Роли и доступы }
+          - { k: Клиенты и студия, b: Telegram-бот и Mini App, s: aiogram 3 }
+        core: { k: Backend, b: FastAPI · общие правила записи, s: API · сервисный слой · Pydantic 2 }
+        db: { k: Данные, b: PostgreSQL 17, s: SQLAlchemy 2 async · миграции Alembic }
+        caption: 'Схема по структуре репозитория: app/web, app/bot, app/api, app/services, app/models.'
+
+    - title: Сайт для клиентов
+      text: 'Адаптивный сайт студии: услуги и цены, работы «до/после», отзывы, сертификаты и контакты. Тексты, фото и цены владелец меняет сам в админ-панели.'
+      gallery:
+        layout: gal3
+        shots:
+          - { image: ../../../assets/velox/prices.png, label: Услуги и цены, size: 1440 × 900, ratio: 16x10 }
+          - { image: ../../../assets/velox/works.png, label: Галерея «до/после», size: 1440 × 900, ratio: 16x10 }
+          - { image: ../../../assets/velox/mobile.png, label: Мобильная версия, size: 390 × 844, ratio: 9x19 }
+
+    - title: Онлайн-запись
+      flow:
+        steps:
+          - { b: Услуга, d: Выбор из каталога студии }
+          - { b: Мастер, d: 'Выбор специалиста, если услуга это допускает' }
+          - { b: Время, d: Только свободные слоты }
+          - { b: Контакты, d: 'Имя, телефон, модель авто по желанию' }
+        result: { b: Подтверждение, d: 'Номер записи, файл для календаря и страница отмены до установленного срока' }
+      after: 'Сайт, админ-панель и бот проверяют запись по одним и тем же правилам; пересечения по времени дополнительно контролируются ограничениями на уровне базы данных.'
+      gallery:
+        layout: single
+        shots:
+          - { image: ../../../assets/velox/booking.png, label: 'Онлайн-запись: выбор даты и времени', size: 1440 × 900, ratio: 16x10 }
+
+    - title: Админ-панель
+      text: 'Рабочее место студии: от расписания и загрузки мастеров до контента сайта. Доступ разделён по ролям.'
+      list:
+        - Расписание и загрузка мастеров
+        - Услуги, цены и мастера
+        - Клиенты и записи
+        - Контент сайта, медиа и отзывы
+        - Настройки и доступ сотрудников
+        - 'Роли: владелец, администратор, мастер'
+        - Удаление данных клиента по запросу (152-ФЗ)
+        - Ежедневные резервные копии
+      gallery:
+        layout: gal2
+        shots:
+          - { image: ../../../assets/velox/admin-schedule.png, label: 'Админ-панель: записи на день по боксам', size: 1440 × 900, ratio: 16x10 }
+          - { image: ../../../assets/velox/admin-services.png, label: 'Админ-панель: услуги и цены', size: 1440 × 900, ratio: 16x10 }
+
+    - title: Telegram-бот
+      panels:
+        - title: Для клиентов
+          items:
+            - Запись на услугу
+            - Mini App с календарём свободного времени
+            - Раздел «Мои записи»
+            - Перенос и отмена записи
+            - Вопрос администратору
+            - Напоминания за 24 часа и за 2 часа
+        - title: Для студии
+          items:
+            - Новые заявки приходят в чат администраторов
+            - Кнопки «Подтвердить», «Назначить мастера», «Отклонить»
+      gallery:
+        layout: galp
+        shots:
+          - { label: 'Бот: запись на услугу', size: 390 × 844, ratio: 9x19 }
+          - { label: 'Чат администраторов: новая заявка', size: 390 × 844, ratio: 9x19 }
+
+    - id: stack
+      title: Технологический стек
+      stack:
+        - { title: Backend, tags: [Python 3.12, FastAPI, Pydantic 2] }
+        - { title: Данные, tags: [PostgreSQL 17, SQLAlchemy 2 async, Alembic] }
+        - { title: Бот, tags: [aiogram 3, Telegram Bot API] }
+        - { title: Интерфейс, tags: [Jinja2, HTML и CSS, JavaScript] }
+        - { title: Медиа, tags: [Pillow, AVIF, WebP] }
+        - { title: Качество, tags: [pytest, ruff, GitHub Actions] }
+
+    - title: Тестирование и качество
+      text: 'Тесты на pytest разделены на unit-, интеграционные, API-тесты и тесты бота. Для них предусмотрено изолированное окружение: отдельный стек Docker Compose. Код проверяется линтером ruff, проверки запускаются в GitHub Actions.'
+      tags: [tests/unit, tests/integration, tests/api, tests/bot, compose.test.yaml]
+      metrics:
+        - { status: pytest · 22.10.2026, value: '219', label: тестов, note: 'Свежий прогон в изолированном стеке: все тесты проходят.' }
+        - { status: pytest-cov · 22.10.2026, value: 92%, label: покрытие строк кода, note: 'Измерено pytest-cov (coverage.py) по пакету app, покрытие строк.' }
+        - { status: GitHub · 22.10.2026, value: '127', label: коммитов в main, note: 'Вспомогательный показатель истории разработки, не метрика качества.' }
+
+    - title: Инфраструктура и развёртывание
+      infra:
+        - { k: Docker Compose, text: 'Отдельные конфигурации для разработки, тестов и production; для сервера заданы лимиты памяти.' }
+        - { k: Миграции, text: Схема базы данных версионируется через Alembic. }
+        - { k: Резервные копии, text: 'Ежедневные копии базы и медиа, плюс копия перед каждым обновлением.' }
+        - { k: Документация, text: 'Установка, обновление и бэкапы описаны в `docs/deployment.md`.' }
+        - { k: Персональные данные, text: Удаление данных клиента по запросу в соответствии со 152-ФЗ. }
+      note: Адреса серверов, ключи и доступы в кейсе не публикуются.
+
+    - id: links
+      title: Ссылки
+      links:
+        - { k: Демо-сайт, b: velox.stakko.online, d: Публичная версия сайта и онлайн-записи, href: 'https://velox.stakko.online' }
+        - { k: Исходный код, b: shelexm/velox-detailing, d: Лицензия PolyForm Noncommercial 1.0.0, href: 'https://github.com/shelexm/velox-detailing' }
+        - { k: Telegram-бот, b: '@velox_detailing_bot', d: 'Запись, перенос и напоминания', href: 'https://t.me/velox_detailing_bot' }
+        - { k: Админ-панель, b: Демо-доступ по запросу, d: Напишите в Telegram, href: 'https://t.me/shelexm' }

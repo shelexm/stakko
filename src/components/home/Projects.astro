@@ -1,0 +1,22 @@
+---
+import SectionHead from '../SectionHead.astro';
+import ProjectCard from '../ProjectCard.astro';
+import { getProjects } from '../../lib/projects';
+import { t, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang).projects;
+const projects = await getProjects(lang);
+---
+<section class="sec" id="projects" aria-labelledby="projects-title">
+  <div class="wrap">
+    <SectionHead num="01" kicker={d.kicker} title={d.title} titleId="projects-title" sub={d.sub} />
+    <div class="pgrid">
+      {projects.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}
+    </div>
+  </div>
+</section>

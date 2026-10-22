@@ -1,0 +1,33 @@
+---
+import Icon from '../Icon.astro';
+import { t, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang).stack;
+---
+<section class="sec line" id="stack" aria-labelledby="stack-title">
+  <div class="wrap tech">
+    <div class="reveal">
+      <div class="kicker mono"><b>03</b><span class="kl"></span>{d.kicker}</div>
+      <h2 class="h2" id="stack-title">{d.title}</h2>
+      <p class="sub" style="margin-top: 20px">{d.sub}</p>
+      <div class="srcs">
+        {d.sources.map((s) => (
+          <a class="src" href={s.href} target="_blank" rel="noopener"><span>{s.label}</span> <Icon name="arrow-ur" size={14} /></a>
+        ))}
+      </div>
+    </div>
+    <div class="tg-grid reveal s1">
+      {d.groups.map((g) => (
+        <div class="tg">
+          <h3 class="mono">{g.title}</h3>
+          <div class="tags">{g.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

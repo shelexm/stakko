@@ -1,0 +1,38 @@
+---
+import Icon, { type IconName } from '../Icon.astro';
+import { CONTACTS } from '../../config';
+import { t, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang).contact;
+const links: { icon: IconName; k: string; v: string; href: string; external: boolean }[] = [
+  { icon: 'telegram', k: 'Telegram', v: CONTACTS.telegramHandle, href: CONTACTS.telegram, external: true },
+  { icon: 'github', k: 'GitHub', v: CONTACTS.githubLabel, href: CONTACTS.github, external: true },
+  { icon: 'mail', k: 'Email', v: CONTACTS.email, href: `mailto:${CONTACTS.email}`, external: false },
+];
+const stagger = ['', ' s1', ' s2'];
+---
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="contact-grid" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker mono"><b>06</b><span class="kl"></span>{d.kicker}</div>
+      <h2 class="hxl" id="contact-title"><span>{d.titleA}</span><span class="grad">{d.titleB}</span></h2>
+      <p class="c-text">{d.text}</p>
+    </div>
+    <div class="c-links">
+      {links.map((l, i) => (
+        <a class={`c-link reveal${stagger[i]}`} href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
+          <span class="c-ico"><Icon name={l.icon} size={22} /></span>
+          <span class="c-txt"><span class="c-k mono">{l.k}</span><span class="c-v">{l.v}</span></span>
+          <Icon name="arrow-ur" size={18} class="c-arr" />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

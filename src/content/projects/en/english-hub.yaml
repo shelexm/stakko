@@ -1,0 +1,11 @@
+lang: en
+order: 2
+title: English Hub
+category: Web app · AI
+role: Full-stack development
+description: 'A self-hosted English learning app: vocabulary, SM-2 spaced repetition, grammar, speaking practice and an AI tutor. AI requests run on the server only.'
+tags: [React, TypeScript, Tailwind CSS, Express, Prisma, PostgreSQL, Anthropic API]
+preview:
+  kind: dash
+links:
+  github: https://github.com/shelexm/english-hub

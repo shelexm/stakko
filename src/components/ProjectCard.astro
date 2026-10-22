@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+import ProjectPreview from './ProjectPreview.astro';
+import { caseHref, type Project } from '../lib/projects';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+  index: number;
+}
+
+const { project: p, lang, index } = Astro.props;
+const d = t(lang).projects;
+const hasCase = Boolean(p.case);
+// The title is a link stretched over the whole card: to the case study, or to the code when there is none.
+const main = hasCase ? caseHref(lang, p.slug) : p.links.github;
+const external = !hasCase;
+const stagger = index % 2 ? ' s1' : '';
+---
+<article class={`pc reveal${p.featured ? ' pc-feat' : ''}${stagger}`} data-spot>
+  <div class="pc-prev">
+    <div class="pc-badges">
+      <span class={`badge${p.featured ? ' badge-f' : ''}`}>{p.featured ? d.featured : d.personal}</span>
+    </div>
+    <ProjectPreview project={p} note={d.mockNote} />
+  </div>
+  <div class="pc-body">
+    <div class="pc-meta mono"><b>{p.category}</b> · {p.role}</div>
+    <h3 class="pc-t">
+      <a class="stretch" href={main} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>{p.title}</a>
+    </h3>
+    <p class="pc-d">{p.description}</p>
+    {p.chips.length > 0 && <div class="pc-chips">{p.chips.map((c) => <span class="pc-chip">{c}</span>)}</div>}
+    <div class="tags">{p.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+    <div class="pc-act">
+      {hasCase && (
+        <a class="btn btn-p btn-sm" href={caseHref(lang, p.slug)}>{d.viewCase} <Icon name="arrow" class="arr" /></a>
+      )}
+      {p.links.demo && (
+        <a class="btn btn-g btn-sm" href={p.links.demo} target="_blank" rel="noopener">{d.demo} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
+      )}
+      {p.links.github && (
+        <a class="btn btn-g btn-sm" href={p.links.github} target="_blank" rel="noopener">{hasCase ? d.github : d.codeOnGithub} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
+      )}
+    </div>
+  </div>
+</article>

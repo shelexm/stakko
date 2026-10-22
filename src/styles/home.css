@@ -88,7 +88,7 @@
 /* preview: real screenshot in a browser frame */
 .mk-shot { background: radial-gradient(420px circle at 75% 15%, rgba(76,120,255,.24), rgba(76,120,255,0) 70%), #0B1324; padding: 50px 40px 0; }
 .mk-shot .mk-frame { display: flex; flex-direction: column; }
-.mk-shot img { display: block; width: 100%; flex: 1; min-height: 0; object-fit: cover; object-position: top center; }
+.mk-shot img { display: block; width: 100%; height: auto; flex: none; }
 
 /* preview mockups */
 .mk-web { background: radial-gradient(420px circle at 75% 15%, rgba(76,120,255,.24), rgba(76,120,255,0) 70%), #0B1324; padding: 50px 40px 0; }
@@ -96,6 +96,19 @@
 .mk-bar { flex: none; height: 28px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #101015; border-bottom: 1px solid rgba(255,255,255,.06); }
 .mk-bar i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.18); }
 .mk-url { margin-left: 10px; height: 16px; padding: 0 8px; border-radius: 5px; background: rgba(255,255,255,.07); font-size: 9.5px; color: #9C9CAA; display: flex; align-items: center; }
+.mk-site { position: relative; height: calc(100% - 28px); padding: 16px 22px; overflow: hidden; background: linear-gradient(180deg, #0C0C0F, #060607); }
+.mk-nav { display: flex; align-items: center; gap: 14px; }
+.mk-logo { font-size: 12px; font-weight: 800; letter-spacing: .3em; color: #EDEDF2; }
+.mk-nav .l { height: 4px; width: 30px; border-radius: 2px; background: rgba(255,255,255,.2); }
+.mk-h { margin-top: 30px; display: grid; gap: 9px; }
+.mk-h span { display: block; height: 13px; border-radius: 4px; background: #EDEDF2; }
+.mk-h span:nth-child(1) { width: 56%; } .mk-h span:nth-child(2) { width: 42%; }
+.mk-p { margin-top: 16px; display: grid; gap: 6px; }
+.mk-p span { display: block; height: 5px; border-radius: 3px; background: rgba(255,255,255,.22); }
+.mk-p span:nth-child(1) { width: 46%; } .mk-p span:nth-child(2) { width: 36%; }
+.mk-btns { margin-top: 18px; display: flex; gap: 8px; }
+.mk-btns span { height: 22px; width: 76px; border-radius: 999px; border: 1px solid rgba(255,255,255,.32); }
+.mk-btns span:first-child { background: #EDEDF2; border-color: #EDEDF2; }
 .mk-dash { background: radial-gradient(420px circle at 25% 10%, rgba(155,107,255,.22), rgba(155,107,255,0) 70%), #0B1324; padding: 46px 36px 0; }
 .mk-app { height: 100%; display: grid; grid-template-columns: 26% minmax(0, 1fr); border-radius: 12px 12px 0 0; border: 1px solid rgba(140,165,255,.22); border-bottom: 0; background: #0A1020; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(0,0,0,.9); }
 .mk-side { padding: 14px 10px; display: flex; flex-direction: column; gap: 5px; border-right: 1px solid var(--line); background: #0C1426; }
