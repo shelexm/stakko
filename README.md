@@ -28,4 +28,5 @@ Every push to `main` builds the site and publishes it to GitHub Pages (`.github/
 
 ## License
 
-Code, texts and images are licensed under [PolyForm Noncommercial 1.0.0](LICENSE): you may study, run and modify them for noncommercial purposes. Commercial use needs written permission from the author.
+Code and texts are licensed under [PolyForm Noncommercial 1.0.0](LICENSE): you may study, run and modify them for noncommercial purposes. Commercial use needs written permission from the author.
+The VÉLOX screenshots show stock photos that keep their own licenses, listed in [velox-detailing/docs/media-sources.md](https://github.com/shelexm/velox-detailing/blob/main/docs/media-sources.md).
