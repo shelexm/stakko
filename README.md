@@ -25,3 +25,7 @@ npm run check     # type check (CI=1 npm run check in a non-interactive shell)
 ## Deploy
 
 Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/deploy.yml`). The custom domain is set in `public/CNAME`.
+
+## License
+
+Code, texts and images are licensed under [PolyForm Noncommercial 1.0.0](LICENSE): you may study, run and modify them for noncommercial purposes. Commercial use needs written permission from the author.
