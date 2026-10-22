@@ -115,6 +115,8 @@ export const ru = {
   },
   caseUi: {
     back: 'Все проекты',
+    openDemo: 'Открыть демо',
+    bot: 'Telegram-бот',
     open: 'Открыть',
     replace: 'заменить реальным изображением',
     lbClose: 'Закрыть просмотр',

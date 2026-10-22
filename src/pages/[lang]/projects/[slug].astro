@@ -1,0 +1,95 @@
+---
+import '../../../styles/case.css';
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import Shot from '../../../components/case/Shot.astro';
+import CaseSection from '../../../components/case/CaseSection.astro';
+import Lightbox from '../../../components/case/Lightbox.astro';
+import { getProjects, type Project } from '../../../lib/projects';
+import { CONTACTS } from '../../../config';
+import { LANGS, t, type Lang } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of LANGS) {
+    for (const project of await getProjects(lang)) {
+      if (project.case) paths.push({ params: { lang, slug: project.slug }, props: { project } });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  project: Project;
+}
+
+const lang = Astro.params.lang as Lang;
+const { project: p } = Astro.props;
+const c = p.case!;
+const d = t(lang);
+const ui = d.caseUi;
+const home = `/${lang}/`;
+
+// Lightbox order: the hero screenshot, then every section's screenshots top to bottom.
+let next = 1;
+const shotStarts = c.sections.map((s) => {
+  const start = next;
+  next += s.gallery?.shots.length ?? 0;
+  return start;
+});
+---
+<Base lang={lang} title={c.seoTitle} description={c.seoDescription}>
+  <Header lang={lang} variant="case" />
+  <main id="main">
+    <section class="chero" aria-labelledby="case-title">
+      <div class="chero-bg" aria-hidden="true">
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <div class="chero-grid"></div>
+        <div class="glow"></div>
+      </div>
+      <div class="wrap">
+        <a class="back rise" href={`${home}#projects`}><Icon name="arrow-l" class="arr-l" />{ui.back}</a>
+        <div class="eyebrow mono rise d1">{c.eyebrow}</div>
+        <h1 class="ch1 rise d2" id="case-title">{c.titleA} <span class="grad">{c.titleB}</span></h1>
+        <p class="lead rise d3">{c.lead}</p>
+        <div class="cta-row rise d4">
+          {p.links.demo && <a class="btn btn-p" href={p.links.demo} target="_blank" rel="noopener" data-magnet>{ui.openDemo} <Icon name="arrow-ur" class="arr-ur arr" /></a>}
+          {p.links.github && <a class="btn btn-g" href={p.links.github} target="_blank" rel="noopener">{d.projects.codeOnGithub} <Icon name="arrow-ur" class="arr-ur arr" /></a>}
+          {p.links.bot && <a class="btn btn-g" href={p.links.bot} target="_blank" rel="noopener">{ui.bot} <Icon name="arrow-ur" class="arr-ur arr" /></a>}
+        </div>
+        <dl class="meta rise d5">
+          {c.meta.map((m) => <div><dt class="mono">{m.k}</dt><dd>{m.v}</dd></div>)}
+        </dl>
+      </div>
+    </section>
+
+    <div class="wrap hero-shot reveal">
+      <Shot shot={c.hero} index={0} openLabel={ui.open} replaceText={ui.replace} browserUrl={c.heroUrl} caption={false} eager />
+    </div>
+
+    {c.sections.map((s, i) => (
+      <CaseSection section={s} num={i + 1} shotStart={shotStarts[i]} openLabel={ui.open} replaceText={ui.replace} />
+    ))}
+
+    <section class="ccta" aria-labelledby="t-cta">
+      <div class="ccta-glow" aria-hidden="true"></div>
+      <div class="wrap reveal">
+        <h2 id="t-cta">{ui.ctaA} <span class="grad">{ui.ctaB}</span></h2>
+        <p>{ui.ctaText}</p>
+        <div class="cta-row">
+          <a class="btn btn-p" href={CONTACTS.telegram} target="_blank" rel="noopener" data-magnet>{d.discuss} <Icon name="arrow" class="arr" /></a>
+          <a class="btn btn-g" href={`${home}#projects`}><Icon name="arrow-l" class="arr-l" />{ui.back}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} variant="case" />
+  <Lightbox lang={lang} />
+</Base>
+
+<script>
+  import '../../../scripts/case-hero';
+</script>

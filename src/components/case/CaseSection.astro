@@ -1,0 +1,122 @@
+---
+// One numbered case section: sticky number and title on the left, content blocks on the right.
+import Icon from '../Icon.astro';
+import Shot from './Shot.astro';
+import type { Project } from '../../lib/projects';
+
+type Section = NonNullable<Project['case']>['sections'][number];
+
+interface Props {
+  section: Section;
+  num: number;
+  /** Lightbox index of this section's first screenshot. */
+  shotStart: number;
+  openLabel: string;
+  replaceText: string;
+}
+
+const { section: s, num, shotStart, openLabel, replaceText } = Astro.props;
+const titleId = `cs-${num}`;
+// `code` spans inside plain text.
+const inline = (text: string) => text.split('`').map((part, i) => ({ part, code: i % 2 === 1 }));
+const layout = s.gallery?.layout;
+---
+<section class={`cs${num === 1 ? ' cs-first' : ''}`} id={s.id} aria-labelledby={titleId}>
+  <div class="wrap cs-in">
+    <div class="cs-side reveal">
+      <span class="cs-n mono">{String(num).padStart(2, '0')}</span>
+      <h2 class="cs-h" id={titleId}>{s.title}</h2>
+    </div>
+    <div class="cs-body">
+      {s.big && <div class="reveal s1"><p class="big">{s.big}</p></div>}
+      {s.text && <p class="txt reveal">{s.text}</p>}
+
+      {s.arch && (
+        <figure class="arch reveal s1" aria-label={s.arch.aria}>
+          <div class="arch-row">
+            {s.arch.top.map((n) => <div class="node"><span class="nk mono">{n.k}</span><b>{n.b}</b><span>{n.s}</span></div>)}
+          </div>
+          <div class="links3" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="node node-core"><span class="nk mono">{s.arch.core.k}</span><b>{s.arch.core.b}</b><span>{s.arch.core.s}</span></div>
+          <div class="links1" aria-hidden="true"><i></i></div>
+          <div class="node node-db"><span class="nk mono">{s.arch.db.k}</span><b>{s.arch.db.b}</b><span>{s.arch.db.s}</span></div>
+          <figcaption>{s.arch.caption}</figcaption>
+        </figure>
+      )}
+
+      {s.flow && (
+        <ol class="flow reveal">
+          {s.flow.steps.map((st, i) => <li><span class="fn mono">{i + 1}</span><b>{st.b}</b><span class="fd">{st.d}</span></li>)}
+          <li class="res"><span class="fn"><Icon name="check" /></span><b>{s.flow.result.b}</b><span class="fd">{s.flow.result.d}</span></li>
+        </ol>
+      )}
+      {s.after && <p class="txt reveal">{s.after}</p>}
+
+      {s.list && <ul class="flist reveal s1">{s.list.map((item) => <li>{item}</li>)}</ul>}
+
+      {s.panels && (
+        <div class="two reveal">
+          {s.panels.map((p) => (
+            <div class="panel">
+              <h3 class="mono">{p.title}</h3>
+              <ul class="plist">{p.items.map((item) => <li>{item}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {s.stack && (
+        <div class="tg-grid reveal">
+          {s.stack.map((g) => <div class="tg"><h3 class="mono">{g.title}</h3><div class="tags">{g.tags.map((tag) => <span class="tag">{tag}</span>)}</div></div>)}
+        </div>
+      )}
+
+      {s.tags && <div class="tags reveal">{s.tags.map((tag) => <span class="tag">{tag}</span>)}</div>}
+
+      {s.metrics && (
+        <div class="metrics reveal s1">
+          {s.metrics.map((m) => (
+            <div class="metric">
+              <span class="st mono">{m.status}</span>
+              <span class="mv">{m.value}</span>
+              <span class="ml">{m.label}</span>
+              <span class="mn">{m.note}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {s.infra && (
+        <div class="infra reveal">
+          {s.infra.map((c) => (
+            <div class="ic">
+              <span class="nk mono">{c.k}</span>
+              <p>{inline(c.text).map((x) => (x.code ? <code>{x.part}</code> : x.part))}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      {s.note && <p class="note reveal">{s.note}</p>}
+
+      {s.links && (
+        <div class="lnk reveal">
+          {s.links.map((l) => (
+            <a class="lc" href={l.href} target="_blank" rel="noopener">
+              <span class="nk mono">{l.k} <Icon name="arrow-ur" /></span>
+              <b>{l.b}</b>
+              <span class="ld">{l.d}</span>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {s.gallery && (
+        <div class={`${layout === 'single' ? '' : layout} reveal s1`}>
+          {s.gallery.shots.map((shot, i) => (
+            <Shot shot={shot} index={shotStart + i} openLabel={openLabel} replaceText={replaceText} caption={layout !== 'single'} />
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

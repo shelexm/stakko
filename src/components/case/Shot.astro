@@ -1,0 +1,53 @@
+---
+// A screenshot that opens in the lightbox. Without an image it renders a labelled placeholder.
+import { Picture, getImage } from 'astro:assets';
+import Icon from '../Icon.astro';
+import type { ImageMetadata } from 'astro';
+
+export interface ShotData {
+  image?: ImageMetadata;
+  label: string;
+  size: string;
+  ratio: '16x9' | '16x10' | '9x19';
+}
+
+interface Props {
+  shot: ShotData;
+  index: number;
+  openLabel: string;
+  replaceText: string;
+  browserUrl?: string;
+  caption?: boolean;
+  eager?: boolean;
+}
+
+const { shot, index, openLabel, replaceText, browserUrl, caption = true, eager = false } = Astro.props;
+const phone = shot.ratio === '9x19';
+const full = shot.image ? await getImage({ src: shot.image, width: phone ? 780 : 1920, format: 'webp' }) : undefined;
+const widths = phone ? [260, 520] : [640, 960, 1280, 1920];
+const sizes = phone ? '230px' : browserUrl ? '(max-width: 1312px) 94vw, 1248px' : '(max-width: 980px) 92vw, 640px';
+---
+<button
+  class={`shot${phone ? ' is-phone' : ''}`}
+  type="button"
+  aria-label={`${openLabel}: ${shot.label}`}
+  data-shot={index}
+  data-full={full?.src}
+  data-label={shot.label}
+  data-ratio={shot.ratio}
+  data-size={shot.size}
+>
+  <span class="shot-frame">
+    {browserUrl && <span class="browser-bar"><i></i><i></i><i></i><span class="browser-url mono">{browserUrl}</span></span>}
+    {shot.image ? (
+      <Picture src={shot.image} alt={shot.label} widths={widths} sizes={sizes} formats={['avif', 'webp']} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    ) : (
+      <span class={`ph r-${shot.ratio}`}>
+        <Icon name="image" size={24} />
+        <b>{shot.label}</b>
+        <span class="mono">{shot.size} · {replaceText}</span>
+      </span>
+    )}
+  </span>
+  {caption && <span class="shot-cap"><span>{shot.label}</span><Icon name="expand" /></span>}
+</button>

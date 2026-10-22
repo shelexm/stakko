@@ -116,6 +116,8 @@ export const en: Dict = {
   },
   caseUi: {
     back: 'All projects',
+    openDemo: 'Open live demo',
+    bot: 'Telegram bot',
     open: 'Open',
     replace: 'replace with the real image',
     lbClose: 'Close preview',

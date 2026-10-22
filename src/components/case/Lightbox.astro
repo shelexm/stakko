@@ -1,0 +1,28 @@
+---
+import Icon from '../Icon.astro';
+import { t, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const d = t(Astro.props.lang).caseUi;
+---
+<dialog class="lb" aria-labelledby="lb-title" data-replace={d.replace}>
+  <div class="lb-box">
+    <div class="lb-top">
+      <span class="lb-count mono" aria-live="polite"></span>
+      <span class="lb-title" id="lb-title"></span>
+      <button class="lb-x" type="button" aria-label={d.lbClose}><Icon name="close" size={20} /></button>
+    </div>
+    <div class="lb-frame"></div>
+    <div class="lb-nav">
+      <button class="btn btn-g btn-sm lb-prev" type="button"><Icon name="arrow-l" class="arr-l" />{d.prev}</button>
+      <button class="btn btn-g btn-sm lb-next" type="button">{d.next}<Icon name="arrow" class="arr" /></button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import '../../scripts/lightbox';
+</script>
