@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import Marquee from './Marquee.astro';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang);
+const [l1, l2, l3] = d.hero.lines;
+---
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <canvas class="hero-cv"></canvas>
+    <div class="hero-fade"></div>
+  </div>
+  <div class="wrap hero-in">
+    <div class="eyebrow mono rise">{d.hero.eyebrow}</div>
+    <h1 class="h1" id="hero-title">
+      <span class="rise d1">{l1}</span>
+      <span class="rise d2">{l2}</span>
+      <span class="rise d3"><span class="grad">{l3}</span></span>
+    </h1>
+    <p class="lead rise d4">{d.hero.lead}</p>
+    <div class="cta-row rise d5">
+      <a class="btn btn-p" href="#projects" data-magnet>{d.hero.primary} <Icon name="arrow" size={18} class="arr" /></a>
+      <a class="btn btn-g" href="#contact" data-magnet>{d.discuss}</a>
+    </div>
+    <p class="open rise d6"><i aria-hidden="true"></i>{d.hero.open}</p>
+  </div>
+  <Marquee lang={lang} />
+</section>
+
+<script>
+  import '../scripts/hero-scene';
+</script>

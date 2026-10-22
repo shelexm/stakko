@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang);
+const items = d.marquee.items;
+// Desktop: one row, three copies for a seamless -33.333% loop.
+// Phone: a capsule with two rows of four items moving in opposite directions.
+const copies = [0, 1, 2];
+const rows = [
+  { cls: 'mq-l', items: items.slice(0, 4) },
+  { cls: 'mq-r', items: items.slice(4) },
+];
+---
+<div class="mq rise d6" role="region" aria-label={d.marquee.label}>
+  <div class="mq-label mono" aria-hidden="true"><i></i>{d.marquee.label}</div>
+  <ul class="sr">{items.map((item) => <li>{item}</li>)}</ul>
+  <div class="mq-view">
+    <div class="mq-track">
+      {copies.map(() => (
+        <ul class="mq-group mono" aria-hidden="true">
+          {items.map((item) => <li>{item}<Icon name="star" size={14} /></li>)}
+        </ul>
+      ))}
+    </div>
+  </div>
+  <div class="mq-m" aria-hidden="true">
+    <svg class="mq-ring" aria-hidden="true"><rect width="100%" height="100%" rx="54" ry="54" pathLength="100"></rect></svg>
+    {rows.map((row) => (
+      <div class="mq-row">
+        <div class={`mq-track ${row.cls}`}>
+          {copies.map(() => (
+            <ul class="mq-group mono">
+              {row.items.map((item) => <li>{item}<Icon name="star" size={12} /></li>)}
+            </ul>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  import '../scripts/marquee';
+</script>
