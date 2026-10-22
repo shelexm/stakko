@@ -1,0 +1,29 @@
+---
+import Logo from './Logo.astro';
+import { CONTACTS } from '../config';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  variant?: 'home' | 'case';
+}
+
+const { lang, variant = 'home' } = Astro.props;
+const d = t(lang);
+---
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div class="ftr-brand">
+      {variant === 'home'
+        ? <Logo href="#top" label={d.a11y.logoTop} small />
+        : <Logo href={`/${lang}/`} label={d.a11y.logoHome} small />}
+      <span class="ftr-role">{d.role}</span>
+    </div>
+    <nav class="ftr-links" aria-label={d.a11y.footerNav}>
+      <a href={CONTACTS.telegram} target="_blank" rel="noopener">Telegram</a>
+      <a href={CONTACTS.github} target="_blank" rel="noopener">GitHub</a>
+      <a href={`mailto:${CONTACTS.email}`}>Email</a>
+    </nav>
+    <span class="copy mono">© 2026 STAKKO · stakko.ru</span>
+  </div>
+</footer>

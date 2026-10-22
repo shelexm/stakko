@@ -1,0 +1,28 @@
+/* Design tokens from design-reference/STAKKO-prompt.md, section 2. */
+:root {
+  --bg: #070B16;
+  --surface: #0E1627;
+  --surface-2: #0A1120;
+  --card-from: #0F182C;
+  --card-to: #0C1424;
+  --line: rgba(140,165,255,.10);
+  --line2: rgba(140,165,255,.18);
+  --tx: #F1F5FF;
+  --tx2: #A3B0CC;
+  --tx3: #8391B3;
+  --kicker: #A9BEFF;
+  --link: #8DB6FF;
+  --link-hover: #B9D2FF;
+  --btn-from: #2F6BF0;
+  --btn-to: #5B4BEA;
+  --font: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  color-scheme: dark;
+}
+.a-blue { --acc: 76,141,255; }
+.a-cyan { --acc: 63,213,255; }
+.a-indigo { --acc: 124,124,255; }
+.a-green { --acc: 61,220,151; }
+.a-sky { --acc: 56,189,248; }
+.a-violet { --acc: 155,107,255; }

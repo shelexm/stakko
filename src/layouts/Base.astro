@@ -1,0 +1,70 @@
+---
+import '@fontsource-variable/manrope';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import { SITE_URL } from '../config';
+import { t, swapLangPath, otherLang, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Pages that exist in one language only (404) skip hreflang. */
+  alternates?: boolean;
+  noindex?: boolean;
+}
+
+const { lang, title, description, alternates = true, noindex = false } = Astro.props;
+const d = t(lang);
+const path = Astro.url.pathname;
+const canonical = new URL(path, SITE_URL).href;
+const alt = otherLang(lang);
+const ogImage = new URL(`/og-${lang}.png`, SITE_URL).href;
+---
+<!doctype html>
+<html lang={d.htmlLang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="canonical" href={canonical} />
+  {alternates && (
+    <>
+      <link rel="alternate" hreflang={lang} href={canonical} />
+      <link rel="alternate" hreflang={alt} href={new URL(swapLangPath(path, alt), SITE_URL).href} />
+      <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/`} />
+    </>
+  )}
+  <meta name="theme-color" content="#070B16" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="STAKKO" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content={d.ogLocale} />
+  <meta property="og:locale:alternate" content={t(alt).ogLocale} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+</head>
+<body>
+  <div class="site">
+    <slot />
+  </div>
+  <script>
+    import '../scripts/menu';
+    import '../scripts/reveal';
+    import '../scripts/pointer-fx';
+    import '../scripts/lang-store';
+  </script>
+</body>
+</html>

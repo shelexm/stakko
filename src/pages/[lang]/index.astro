@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { t, langPaths, type Lang } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+
+const lang = Astro.params.lang as Lang;
+const d = t(lang);
+---
+<Base lang={lang} title={d.meta.homeTitle} description={d.meta.homeDescription}>
+  <Header lang={lang} />
+  <main id="main">
+  </main>
+  <Footer lang={lang} />
+</Base>

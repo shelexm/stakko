@@ -1,0 +1,77 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { CONTACTS } from '../config';
+import { t, otherLang, swapLangPath, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  /** Home links to its own anchors; a case page links back to the home page. */
+  variant?: 'home' | 'case';
+}
+
+const { lang, variant = 'home' } = Astro.props;
+const d = t(lang);
+const alt = otherLang(lang);
+const altHref = swapLangPath(Astro.url.pathname, alt);
+const home = `/${lang}/`;
+const isHome = variant === 'home';
+const anchor = (id: string) => (isHome ? `#${id}` : `${home}#${id}`);
+
+const mobileLinks = isHome
+  ? [
+      { href: '#services', label: d.nav.services },
+      { href: '#projects', label: d.nav.projects },
+      { href: '#approach', label: d.nav.approach },
+      { href: '#contact', label: d.nav.contact },
+    ]
+  : [
+      { href: home, label: d.nav.home },
+      { href: '#task', label: d.caseUi.mnav.task },
+      { href: '#stack', label: d.caseUi.mnav.stack },
+      { href: '#links', label: d.caseUi.mnav.links },
+    ];
+---
+<a class="skip" href="#main">{d.a11y.skip}</a>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <Logo href={isHome ? '#top' : home} label={d.a11y.logoHome} />
+    <nav class="nav" aria-label={d.a11y.mainNav}>
+      <a href={anchor('services')}>{d.nav.services}</a>
+      <a href={anchor('projects')} aria-current={isHome ? undefined : 'page'}>{d.nav.projects}</a>
+      <a href={anchor('approach')}>{d.nav.approach}</a>
+    </nav>
+    <div class="hdr-r">
+      <div class="lang" role="group" aria-label={d.a11y.langGroup}>
+        {lang === 'ru' ? (
+          <>
+            <span aria-current="true" lang="ru">RU</span>
+            <a href={altHref} lang="en" hreflang="en" aria-label={d.a11y.otherLang} data-set-lang="en">EN</a>
+          </>
+        ) : (
+          <>
+            <a href={altHref} lang="ru" hreflang="ru" aria-label={d.a11y.otherLang} data-set-lang="ru">RU</a>
+            <span aria-current="true" lang="en">EN</span>
+          </>
+        )}
+      </div>
+      {isHome ? (
+        <a class="btn btn-g btn-sm hdr-cta" href="#contact">{d.discuss}</a>
+      ) : (
+        <a class="btn btn-g btn-sm hdr-cta" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.discuss}</a>
+      )}
+      <button class="burger" type="button" aria-controls="mnav" aria-expanded="false" aria-label={d.a11y.menuOpen} data-label-open={d.a11y.menuOpen} data-label-close={d.a11y.menuClose}>
+        <Icon name="menu" size={22} class="i-open" />
+        <Icon name="close" size={22} class="i-close" />
+      </button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label={d.a11y.mobileNav} hidden>
+    {mobileLinks.map((l) => <a class="ml" href={l.href}>{l.label}</a>)}
+    {isHome ? (
+      <a class="btn btn-p" href="#contact">{d.discuss}</a>
+    ) : (
+      <a class="btn btn-p" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.discuss}</a>
+    )}
+  </nav>
+</header>

@@ -1,0 +1,36 @@
+---
+// Stroke icons from the design reference. Decorative: always aria-hidden.
+const paths = {
+  arrow: { sw: 2, d: '<path d="M5 12h14M13 6l6 6-6 6"/>' },
+  'arrow-l': { sw: 2, d: '<path d="M19 12H5M11 6l-6 6 6 6"/>' },
+  'arrow-ur': { sw: 2, d: '<path d="M7 17 17 7M8 7h9v9"/>' },
+  star: { sw: 2.4, d: '<path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/>' },
+  menu: { sw: 1.8, d: '<path d="M4 7h16M4 12h16M4 17h16"/>' },
+  close: { sw: 1.8, d: '<path d="M6 6l12 12M18 6 6 18"/>' },
+  plus: { sw: 1.8, d: '<path d="M12 5v14M5 12h14"/>' },
+  check: { sw: 2.2, d: '<path d="m5 12.5 4.5 4.5L19 7.5"/>' },
+  expand: { sw: 1.8, d: '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>' },
+  image: { sw: 1.5, d: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-9 9"/>' },
+  chat: { sw: 1.6, d: '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4a8.5 8.5 0 1 1 15.6-4.6Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/>' },
+  browser: { sw: 1.6, d: '<rect x="2.5" y="4" width="19" height="16" rx="3"/><path d="M2.5 9h19"/><path d="m10 13-2 2 2 2M14 13l2 2-2 2"/>' },
+  nodes: { sw: 1.6, d: '<circle cx="5.5" cy="6" r="2.5"/><circle cx="18.5" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 6h8M6.9 8.2l3.8 7.6M17.1 8.2l-3.8 7.6"/>' },
+  chart: { sw: 1.6, d: '<path d="M3.5 3.5v17h17"/><path d="m7.5 15 4-5 3 3 5-6.5"/>' },
+  phone: { sw: 1.6, d: '<rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M11 18.5h2"/>' },
+  sparkle: { sw: 1.6, d: '<path d="M11 3.5l1.9 4.9 4.9 1.9-4.9 1.9L11 17.1l-1.9-4.9-4.9-1.9 4.9-1.9L11 3.5Z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"/>' },
+  telegram: { sw: 1.7, d: '<path d="M21 3.5 10.6 13.9"/><path d="M21 3.5 14.4 21l-3.8-7.1L3.5 10.1 21 3.5Z"/>' },
+  github: { sw: 1.7, d: '<circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><circle cx="18" cy="8" r="2.2"/><path d="M6 7.7v8.6"/><path d="M18 10.2c0 4.2-6.5 3.2-11.2 6.6"/>' },
+  mail: { sw: 1.7, d: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5.5 8-5.5"/>' },
+} as const;
+
+export type IconName = keyof typeof paths;
+
+interface Props {
+  name: IconName;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 16, class: cls } = Astro.props;
+const icon = paths[name];
+---
+<svg class={cls} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width={icon.sw} stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icon.d} />
