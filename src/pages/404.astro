@@ -1,0 +1,31 @@
+---
+// GitHub Pages serves this page for every missing address, in either language, so it shows both.
+import '../styles/case.css';
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+import { t } from '../i18n';
+
+const ru = t('ru').notFound;
+const en = t('en').notFound;
+---
+<Base lang="ru" title={t('ru').meta.notFoundTitle} description={ru.text} alternates={false} noindex>
+  <header class="hdr">
+    <div class="wrap hdr-in"><Logo href="/" label="STAKKO" /></div>
+  </header>
+  <main id="main">
+    <section class="ccta" aria-labelledby="nf-title">
+      <div class="ccta-glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="eyebrow mono" style="justify-content: center">404</p>
+        <h1 id="nf-title" class="ch1" style="margin-top: 24px">{ru.title}</h1>
+        <p>{ru.text}</p>
+        <p lang="en">{en.title}. {en.text}</p>
+        <div class="cta-row">
+          <a class="btn btn-p" href="/ru/">{ru.home} <Icon name="arrow" class="arr" /></a>
+          <a class="btn btn-g" href="/en/" lang="en">{en.home}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
