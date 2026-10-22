@@ -1,0 +1,76 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Case-velox-en.dc.html": {
+      "expand": "fill",
+      "h": 8600,
+      "is_interactive": true,
+      "title": "Case VÉLOX · EN",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Case-velox-ru.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Кейс VÉLOX · RU",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Home-en.dc.html": {
+      "expand": "fill",
+      "h": 6900,
+      "is_interactive": true,
+      "title": "Home · EN",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 6900,
+      "is_interactive": true,
+      "title": "Главная · RU",
+      "w": 1440,
+      "x": 456,
+      "y": -300
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-22T13:16:03Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "titleEn": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "STAKKO · English /en/",
+      "w": 240,
+      "x": 3040,
+      "y": -300
+    },
+    "titleRu": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "STAKKO · русская версия /ru/",
+      "w": 240,
+      "x": 42,
+      "y": -478
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Case-velox-ru.dc.html",
+    "Home-en.dc.html",
+    "Case-velox-en.dc.html"
+  ],
+  "pages": [],
+  "title": "STAKKO — портфолио"
+}
