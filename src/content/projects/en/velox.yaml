@@ -105,8 +105,8 @@ case:
       gallery:
         layout: galp
         shots:
-          - { label: 'Bot: booking a service', size: 390 × 844, ratio: 9x19 }
-          - { label: 'Admin chat: new request', size: 390 × 844, ratio: 9x19 }
+          - { image: ../../../assets/velox/bot-miniapp.png, label: 'Mini App: picking a date and time', size: 390 × 844, ratio: 9x19 }
+          - { image: ../../../assets/velox/bot-admin-chat.png, label: 'Admin chat: new request', size: 390 × 844, ratio: 9x19 }
 
     - id: stack
       title: Tech stack

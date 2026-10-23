@@ -105,8 +105,8 @@ case:
       gallery:
         layout: galp
         shots:
-          - { label: 'Бот: запись на услугу', size: 390 × 844, ratio: 9x19 }
-          - { label: 'Чат администраторов: новая заявка', size: 390 × 844, ratio: 9x19 }
+          - { image: ../../../assets/velox/bot-miniapp.png, label: 'Mini App: выбор даты и времени', size: 390 × 844, ratio: 9x19 }
+          - { image: ../../../assets/velox/bot-admin-chat.png, label: 'Чат администраторов: новая заявка', size: 390 × 844, ratio: 9x19 }
 
     - id: stack
       title: Технологический стек
