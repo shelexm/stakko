@@ -40,7 +40,7 @@ const sizes = phone ? '230px' : browserUrl ? '(max-width: 1312px) 94vw, 1248px' 
   <span class="shot-frame">
     {browserUrl && <span class="browser-bar"><i></i><i></i><i></i><span class="browser-url mono">{browserUrl}</span></span>}
     {shot.image ? (
-      <Picture src={shot.image} alt={shot.label} widths={widths} sizes={sizes} formats={['avif', 'webp']} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      <Picture src={shot.image} alt={shot.label} widths={widths} sizes={sizes} formats={['webp']} loading={eager ? 'eager' : 'lazy'} decoding="async" />
     ) : (
       <span class={`ph r-${shot.ratio}`}>
         <Icon name="image" size={24} />
