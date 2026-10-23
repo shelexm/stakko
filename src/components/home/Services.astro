@@ -20,7 +20,11 @@ const stagger = ['', ' s1', ' s2'];
           <div class="ico"><Icon name={s.icon as IconName} size={24} /></div>
           <span class="num mono">{String(i + 1).padStart(2, '0')}</span>
           <h3>{s.title}</h3>
-          <p>{s.text}</p>
+          {/* Open by default, so the text is there without JS; on phones a script folds it to keep the list short. */}
+          <details class="svc-more" open data-fold-mobile>
+            <summary>{d.more}</summary>
+            <p>{s.text}</p>
+          </details>
           <div class="svc-ft">
             <span class="svc-scope">{s.scope}</span>
             <span class="price">{s.price.replace(/ /g, ' ')}</span>
@@ -35,3 +39,7 @@ const stagger = ['', ' s1', ' s2'];
     </div>
   </div>
 </section>
+
+<script>
+  import '../../scripts/fold';
+</script>

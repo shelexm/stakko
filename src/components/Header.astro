@@ -18,13 +18,14 @@ const home = `/${lang}/`;
 const isHome = variant === 'home';
 const anchor = (id: string) => (isHome ? `#${id}` : `${home}#${id}`);
 
+// Same order as the sections on the page.
+const navLinks = [
+  { id: 'projects', label: d.nav.projects },
+  { id: 'services', label: d.nav.services },
+  { id: 'approach', label: d.nav.approach },
+];
 const mobileLinks = isHome
-  ? [
-      { href: '#services', label: d.nav.services },
-      { href: '#projects', label: d.nav.projects },
-      { href: '#approach', label: d.nav.approach },
-      { href: '#contact', label: d.nav.contact },
-    ]
+  ? [...navLinks.map((l) => ({ href: `#${l.id}`, label: l.label })), { href: '#contact', label: d.nav.contact }]
   : [
       { href: home, label: d.nav.home },
       { href: '#task', label: d.caseUi.mnav.task },
@@ -37,9 +38,9 @@ const mobileLinks = isHome
   <div class="wrap hdr-in">
     <Logo href={isHome ? '#top' : home} label={d.a11y.logoHome} />
     <nav class="nav" aria-label={d.a11y.mainNav}>
-      <a href={anchor('services')}>{d.nav.services}</a>
-      <a href={anchor('projects')} aria-current={isHome ? undefined : 'page'}>{d.nav.projects}</a>
-      <a href={anchor('approach')}>{d.nav.approach}</a>
+      {navLinks.map((l) => (
+        <a href={anchor(l.id)} aria-current={!isHome && l.id === 'projects' ? 'page' : undefined}>{l.label}</a>
+      ))}
     </nav>
     <div class="hdr-r">
       <div class="lang" role="group" aria-label={d.a11y.langGroup}>
@@ -55,11 +56,10 @@ const mobileLinks = isHome
           </>
         )}
       </div>
-      {isHome ? (
-        <a class="btn btn-g btn-sm hdr-cta" href="#contact">{d.discuss}</a>
-      ) : (
-        <a class="btn btn-g btn-sm hdr-cta" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.discuss}</a>
-      )}
+      <a class="btn btn-g btn-sm hdr-cta" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.discuss}</a>
+      <a class="hdr-tg" href={CONTACTS.telegram} target="_blank" rel="noopener" aria-label={d.a11y.telegram}>
+        <Icon name="telegram" size={20} />
+      </a>
       <button class="burger" type="button" aria-controls="mnav" aria-expanded="false" aria-label={d.a11y.menuOpen} data-label-open={d.a11y.menuOpen} data-label-close={d.a11y.menuClose}>
         <Icon name="menu" size={22} class="i-open" />
         <Icon name="close" size={22} class="i-close" />
@@ -68,10 +68,7 @@ const mobileLinks = isHome
   </div>
   <nav class="mnav" id="mnav" aria-label={d.a11y.mobileNav} hidden>
     {mobileLinks.map((l) => <a class="ml" href={l.href}>{l.label}</a>)}
-    {isHome ? (
-      <a class="btn btn-p" href="#contact">{d.discuss}</a>
-    ) : (
-      <a class="btn btn-p" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.discuss}</a>
-    )}
+    <a class="btn btn-p" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.discuss}</a>
   </nav>
+  <div class="mscrim" hidden></div>
 </header>

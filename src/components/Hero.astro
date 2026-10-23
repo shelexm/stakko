@@ -26,7 +26,8 @@ const featured = (await getProjects(lang)).find((p) => p.featured && p.highlight
     <div class="hero-fade"></div>
   </div>
   <div class="wrap hero-in">
-    <div class="eyebrow mono rise">{d.hero.eyebrow}</div>
+    {/* Parts never break inside; on a phone the line wraps only at a "·". */}
+    <div class="eyebrow mono rise"><span>{d.hero.eyebrow.split(' · ').map((part, i) => <>{i > 0 && ' · '}<span class="nw">{part}</span></>)}</span></div>
     <h1 class="h1" id="hero-title">
       <span class="rise d1">{l1}</span>
       <span class="rise d2">{l2}</span>
@@ -38,12 +39,16 @@ const featured = (await getProjects(lang)).find((p) => p.featured && p.highlight
       <a class="btn btn-g" href={CONTACTS.telegram} target="_blank" rel="noopener" data-magnet>{d.discuss} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
     </div>
     {featured && (
-      <ul class="proof mono rise d6" aria-label={d.hero.proofLabel}>
-        <li class="proof-k">{featured.short ?? featured.title}</li>
-        {featured.highlights.map((h) => <li><b>{h.value}</b> {h.label}</li>)}
-        {featured.links.demo && <li><a href={featured.links.demo} target="_blank" rel="noopener">{d.hero.proofDemo} <Icon name="arrow-ur" size={12} /></a></li>}
-        {featured.links.github && <li><a href={featured.links.github} target="_blank" rel="noopener">{d.hero.proofCode} <Icon name="arrow-ur" size={12} /></a></li>}
-      </ul>
+      <div class="proof mono rise d6" role="group" aria-label={d.hero.proofLabel}>
+        <ul>
+          <li class="proof-k">{featured.short ?? featured.title}</li>
+          {featured.highlights.map((h) => <li><b>{h.value}</b> {h.label}</li>)}
+        </ul>
+        <ul>
+          {featured.links.demo && <li><a href={featured.links.demo} target="_blank" rel="noopener">{d.hero.proofDemo} <Icon name="arrow-ur" size={12} /></a></li>}
+          {featured.links.github && <li><a href={featured.links.github} target="_blank" rel="noopener">{d.hero.proofCode} <Icon name="arrow-ur" size={12} /></a></li>}
+        </ul>
+      </div>
     )}
     <p class="open rise d6"><i aria-hidden="true"></i>{d.hero.open}</p>
   </div>

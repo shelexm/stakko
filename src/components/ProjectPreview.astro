@@ -16,7 +16,7 @@ const bars = [40, 65, 30, 80, 55, 70, 45, 90, 60, 75];
 {p.kind === 'shot' && p.image && (
   <div class="mk mk-shot">
     <div class="mk-frame">
-      <div class="mk-bar"><i></i><i></i><i></i><span class="mk-url">{p.url}</span></div>
+      <div class="mk-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mk-url">{p.url}</span></div>
       <Picture src={p.image} alt={p.alt ?? ''} widths={[480, 720, 960]} sizes="(max-width: 960px) 92vw, 600px" formats={['avif', 'webp']} loading="lazy" decoding="async" />
     </div>
   </div>
