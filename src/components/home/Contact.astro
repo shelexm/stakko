@@ -1,6 +1,6 @@
 ---
-import Icon, { type IconName } from '../Icon.astro';
-import { CONTACTS } from '../../config';
+import Icon from '../Icon.astro';
+import { CONTACTS, REPOS } from '../../config';
 import { t, type Lang } from '../../i18n';
 
 interface Props {
@@ -9,30 +9,61 @@ interface Props {
 
 const { lang } = Astro.props;
 const d = t(lang).contact;
-const links: { icon: IconName; k: string; v: string; href: string; external: boolean }[] = [
-  { icon: 'telegram', k: 'Telegram', v: CONTACTS.telegramHandle, href: CONTACTS.telegram, external: true },
-  { icon: 'github', k: 'GitHub', v: CONTACTS.githubLabel, href: CONTACTS.github, external: true },
-  { icon: 'mail', k: 'Email', v: CONTACTS.email, href: `mailto:${CONTACTS.email}`, external: false },
-];
-const stagger = ['', ' s1', ' s2'];
+// Both audiences meet here: one headline, two short briefs, Telegram first, email as the fallback.
+const [mailUser, mailHost] = CONTACTS.email.split('@');
 ---
 <section class="contact" id="contact" aria-labelledby="contact-title">
   <div class="contact-glow" aria-hidden="true"></div>
   <div class="contact-grid" aria-hidden="true"></div>
   <div class="wrap">
     <div class="reveal">
-      <div class="kicker mono"><b>06</b><span class="kl"></span>{d.kicker}</div>
+      <div class="kicker mono"><b>05</b><span class="kl"></span>{d.kicker}</div>
       <h2 class="hxl" id="contact-title"><span>{d.titleA}</span><span class="grad">{d.titleB}</span></h2>
       <p class="c-text">{d.text}</p>
     </div>
+
+    <div class="paths">
+      <div class="path path-cli reveal">
+        <div>
+          <h3 class="plbl mono">{d.cliLabel}</h3>
+          <p class="pbig">{d.cliText}</p>
+        </div>
+        <div class="pact">
+          <a class="btn btn-p" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.write} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
+        </div>
+      </div>
+      <div class="path path-emp reveal s1">
+        <div>
+          <h3 class="plbl mono">{d.empLabel}</h3>
+          <p class="pbig">{d.empText}</p>
+        </div>
+        <div class="pact">
+          <a class="btn btn-p" href={CONTACTS.telegram} target="_blank" rel="noopener">{d.write} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
+          <a class="btn btn-g" href={REPOS.velox} target="_blank" rel="noopener">{d.empCode} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
+        </div>
+      </div>
+    </div>
+
     <div class="c-links">
-      {links.map((l, i) => (
-        <a class={`c-link reveal${stagger[i]}`} href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
-          <span class="c-ico"><Icon name={l.icon} size={22} /></span>
-          <span class="c-txt"><span class="c-k mono">{l.k}</span><span class="c-v">{l.v}</span></span>
-          <Icon name="arrow-ur" size={18} class="c-arr" />
-        </a>
-      ))}
+      <a class="c-link reveal" href={CONTACTS.telegram} target="_blank" rel="noopener">
+        <span class="c-ico"><Icon name="telegram" size={22} /></span>
+        <span class="c-txt"><span class="c-k mono">Telegram</span><span class="c-v">{CONTACTS.telegramHandle}</span></span>
+        <Icon name="arrow-ur" size={18} class="c-arr" />
+      </a>
+      <div class="c-link c-mail reveal s1">
+        <span class="c-ico"><Icon name="mail" size={22} /></span>
+        <span class="c-txt">
+          <span class="c-k mono">Email</span>
+          <a class="c-v" href={`mailto:${CONTACTS.email}`}>{mailUser}<wbr />@{mailHost}</a>
+        </span>
+        <button class="copy-btn" type="button" data-copy={CONTACTS.email} data-copied={d.copied} hidden>
+          <span class="copy-label">{d.copy}</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import '../../scripts/copy';
+</script>

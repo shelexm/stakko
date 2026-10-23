@@ -45,11 +45,15 @@ const projects = defineCollection({
       order: z.number(),
       featured: z.boolean().default(false),
       title: z.string(),
+      // Short name for tight spots such as the hero proof line; falls back to the title.
+      short: z.string().optional(),
       category: z.string(),
       role: z.string(),
       description: z.string(),
       chips: z.array(z.string()).default([]),
       tags: z.array(z.string()),
+      // Short measured facts shown on the card and, for the featured project, in the hero.
+      highlights: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
       preview: z.object({
         kind: z.enum(['shot', 'web', 'dash', 'bot', 'api']),
         image: image().optional(),

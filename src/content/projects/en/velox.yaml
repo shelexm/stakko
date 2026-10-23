@@ -2,11 +2,15 @@ lang: en
 order: 1
 featured: true
 title: VÉLOX Detailing Studio
+short: VÉLOX
 category: Web product
 role: Full-stack development
 description: A website, online booking, admin panel and Telegram bot for a car detailing studio. Every channel shares one database and one set of booking rules.
 chips: [Website, Online booking, Admin panel, Telegram bot]
 tags: [Python, FastAPI, PostgreSQL, aiogram 3, Docker]
+highlights:
+  - { value: '219', label: tests }
+  - { value: 92%, label: line coverage }
 preview:
   kind: shot
   image: ../../../assets/velox/home.png

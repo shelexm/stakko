@@ -2,11 +2,15 @@ lang: ru
 order: 1
 featured: true
 title: VÉLOX Detailing Studio
+short: VÉLOX
 category: Веб-продукт
 role: Full-stack разработка
 description: Сайт, онлайн-запись, админ-панель и Telegram-бот для студии детейлинга. Все каналы работают с одной базой данных и общими правилами записи.
 chips: [Сайт, Онлайн-запись, Админ-панель, Telegram-бот]
 tags: [Python, FastAPI, PostgreSQL, aiogram 3, Docker]
+highlights:
+  - { value: '219', label: тестов }
+  - { value: 92%, label: покрытия кода }
 preview:
   kind: shot
   image: ../../../assets/velox/home.png

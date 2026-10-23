@@ -1,6 +1,8 @@
 ---
 import Icon from './Icon.astro';
 import Marquee from './Marquee.astro';
+import { CONTACTS } from '../config';
+import { getProjects } from '../lib/projects';
 import { t, type Lang } from '../i18n';
 
 interface Props {
@@ -10,6 +12,8 @@ interface Props {
 const { lang } = Astro.props;
 const d = t(lang);
 const [l1, l2, l3] = d.hero.lines;
+// The featured project's measured facts go right under the calls to action: the claim gets its proof.
+const featured = (await getProjects(lang)).find((p) => p.featured && p.highlights.length);
 ---
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero-bg" aria-hidden="true">
@@ -31,8 +35,16 @@ const [l1, l2, l3] = d.hero.lines;
     <p class="lead rise d4">{d.hero.lead}</p>
     <div class="cta-row rise d5">
       <a class="btn btn-p" href="#projects" data-magnet>{d.hero.primary} <Icon name="arrow" size={18} class="arr" /></a>
-      <a class="btn btn-g" href="#contact" data-magnet>{d.discuss}</a>
+      <a class="btn btn-g" href={CONTACTS.telegram} target="_blank" rel="noopener" data-magnet>{d.discuss} <Icon name="arrow-ur" size={15} class="arr-ur arr" /></a>
     </div>
+    {featured && (
+      <ul class="proof mono rise d6" aria-label={d.hero.proofLabel}>
+        <li class="proof-k">{featured.short ?? featured.title}</li>
+        {featured.highlights.map((h) => <li><b>{h.value}</b> {h.label}</li>)}
+        {featured.links.demo && <li><a href={featured.links.demo} target="_blank" rel="noopener">{d.hero.proofDemo} <Icon name="arrow-ur" size={12} /></a></li>}
+        {featured.links.github && <li><a href={featured.links.github} target="_blank" rel="noopener">{d.hero.proofCode} <Icon name="arrow-ur" size={12} /></a></li>}
+      </ul>
+    )}
     <p class="open rise d6"><i aria-hidden="true"></i>{d.hero.open}</p>
   </div>
   <Marquee lang={lang} />

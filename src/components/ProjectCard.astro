@@ -31,6 +31,11 @@ const stagger = index % 2 ? ' s1' : '';
       <a class="stretch" href={main} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>{p.title}</a>
     </h3>
     <p class="pc-d">{p.description}</p>
+    {p.highlights.length > 0 && (
+      <dl class="pc-proof">
+        {p.highlights.map((h) => <div><dt class="mono">{h.label}</dt><dd>{h.value}</dd></div>)}
+      </dl>
+    )}
     {p.chips.length > 0 && <div class="pc-chips">{p.chips.map((c) => <span class="pc-chip">{c}</span>)}</div>}
     <div class="tags">{p.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
     <div class="pc-act">
