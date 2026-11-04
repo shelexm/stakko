@@ -1,0 +1,212 @@
+{
+  "lang": "en",
+  "order": 3,
+  "title": "School Consultant Bot",
+  "short": "School Bot",
+  "category": "Telegram bot · AI",
+  "role": "Backend & integrations",
+  "description": "An AI consultant for an online school in Telegram: knowledge-based answers, lead qualification and contextual handoff to a human manager. Integrations with amoCRM and Bitrix24.",
+  "chips": [
+    "AI consultation",
+    "Lead qualification",
+    "Human handoff",
+    "CRM"
+  ],
+  "tags": [
+    "Python 3.12",
+    "aiogram 3",
+    "SQLAlchemy",
+    "MySQL",
+    "Docker"
+  ],
+  "preview": {
+    "kind": "shot",
+    "image": "../../../assets/school-consultant-bot/demo-flow.png",
+    "url": "Demonstration mockup",
+    "alt": "Demonstration mockup: consultation, lead card and manager reply. Fictional data; Russian UI."
+  },
+  "links": {},
+  "case": {
+    "seoTitle": "School Consultant Bot · Case study · STAKKO",
+    "seoDescription": "An AI consultant for an online school in Telegram: knowledge-based answers, lead qualification and contextual handoff to a human manager. Integrations with amoCRM and Bitrix24.",
+    "eyebrow": "CASE 02 · TELEGRAM AI CONSULTANT",
+    "titleA": "School",
+    "titleB": "Consultant Bot",
+    "lead": "An AI consultant for an online school in Telegram: knowledge-based answers, lead qualification and contextual handoff to a human manager. Integrations with amoCRM and Bitrix24.",
+    "meta": [
+      {
+        "k": "Role",
+        "v": "Backend & integrations"
+      },
+      {
+        "k": "Scope",
+        "v": "Telegram · AI · CRM"
+      },
+      {
+        "k": "Foundation",
+        "v": "Python · aiogram · MySQL"
+      },
+      {
+        "k": "Interface language",
+        "v": "Russian"
+      }
+    ],
+    "heroUrl": "Demonstration mockup · fictional data",
+    "hero": {
+      "image": "../../../assets/school-consultant-bot/demo-flow.png",
+      "label": "Demonstration mockup: consultation, lead card and human handoff",
+      "size": "1672 × 941",
+      "ratio": "16x9"
+    },
+    "sections": [
+      {
+        "id": "task",
+        "title": "The challenge",
+        "big": "Help prospective students understand an online school’s courses, clarify their needs and hand the conversation to a person with the collected context — in the same Telegram chat.",
+        "note": "The image above is an AI-generated demonstration mockup with fictional data, illustrating code-supported workflows rather than a live screenshot. The Russian UI reflects the project’s demo knowledge base for a tarot school."
+      },
+      {
+        "title": "From question to lead",
+        "flow": {
+          "steps": [
+            {
+              "b": "Consultation",
+              "d": "Course information from the school’s knowledge base"
+            },
+            {
+              "b": "Qualification",
+              "d": "Experience, learning goals and available time"
+            },
+            {
+              "b": "Contact",
+              "d": "Request a phone number via a Telegram button"
+            }
+          ],
+          "result": {
+            "b": "Human handoff",
+            "d": "A lead card and conversation context in the managers’ group"
+          }
+        },
+        "after": "The client profile and message history are stored in the database. Handoff switches the conversation into manager mode."
+      },
+      {
+        "title": "AI and consultation boundaries",
+        "text": "The system prompt directs the model to consult the knowledge base. Model tools save lead details, request contact information and initiate handoff. The bot handles education-related questions rather than fortune-telling.",
+        "list": [
+          "Configurable Claude, OpenAI and OpenRouter providers",
+          "Handoff for client requests, purchase intent, refunds or special terms",
+          "Automatic handoff after a configured number of unanswered questions",
+          "Conversation history and saved client details provide model context"
+        ]
+      },
+      {
+        "title": "The manager workflow",
+        "panels": [
+          {
+            "title": "Lead card",
+            "items": [
+              "Name, contact, course, level, goal and study time",
+              "Handoff reason and a summary of the request",
+              "A claim button showing the assigned manager"
+            ]
+          },
+          {
+            "title": "Conversation",
+            "items": [
+              "Replies to the lead card are delivered to the client",
+              "Client messages are linked to the lead",
+              "AI consultation pauses while a manager handles the conversation",
+              "The /bot command returns the client to the AI assistant"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "CRM integrations",
+        "text": "The code includes amoCRM and Bitrix24 adapters. CRM export can be disabled while keeping leads in the database and the managers’ Telegram group.",
+        "after": "A CRM error does not block handoff: managers already have the lead card, and the bot posts a warning to create the CRM entry manually."
+      },
+      {
+        "id": "stack",
+        "title": "Technology stack",
+        "stack": [
+          {
+            "title": "Backend",
+            "tags": [
+              "Python 3.12",
+              "aiogram 3",
+              "Pydantic Settings"
+            ]
+          },
+          {
+            "title": "Data",
+            "tags": [
+              "MySQL",
+              "SQLAlchemy async",
+              "aiomysql"
+            ]
+          },
+          {
+            "title": "AI",
+            "tags": [
+              "Anthropic API",
+              "OpenAI API",
+              "OpenRouter",
+              "Tool calling"
+            ]
+          },
+          {
+            "title": "Integrations",
+            "tags": [
+              "Telegram Bot API",
+              "amoCRM",
+              "Bitrix24",
+              "httpx"
+            ]
+          },
+          {
+            "title": "Quality",
+            "tags": [
+              "pytest",
+              "pytest-asyncio",
+              "respx"
+            ]
+          },
+          {
+            "title": "Deployment",
+            "tags": [
+              "Docker",
+              "Docker Compose"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Checks and deployment",
+        "text": "The repository includes tests for conversations, lead cards, CRM, prompts, LLM providers and storage. External LLM and HTTP calls are replaced with test doubles. Tests support in-memory SQLite and a dedicated MySQL database.",
+        "infra": [
+          {
+            "k": "Docker Compose",
+            "text": "Configuration for running the bot and MySQL, with environment-based settings."
+          },
+          {
+            "k": "Knowledge base",
+            "text": "Courses and FAQ are maintained separately in Markdown. The prompt is assembled with school settings."
+          }
+        ]
+      },
+      {
+        "id": "links",
+        "title": "Discuss a similar project",
+        "links": [
+          {
+            "k": "Contact",
+            "b": "Telegram · @shelexm",
+            "d": "AI consultants, Telegram bots and CRM integrations",
+            "href": "https://t.me/shelexm"
+          }
+        ]
+      }
+    ]
+  }
+}
