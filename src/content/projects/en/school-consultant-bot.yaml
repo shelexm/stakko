@@ -1,6 +1,6 @@
 {
   "lang": "en",
-  "order": 3,
+  "order": 2,
   "title": "School Consultant Bot",
   "short": "School Bot",
   "category": "Telegram bot · AI",
@@ -21,9 +21,9 @@
   ],
   "preview": {
     "kind": "shot",
-    "image": "../../../assets/school-consultant-bot/demo-flow.png",
+    "image": "../../../assets/school-consultant-bot/demo-flow-en.png",
     "url": "Demonstration mockup",
-    "alt": "Demonstration mockup: consultation, lead card and manager reply. Fictional data; Russian UI."
+    "alt": "English demonstration mockup: consultation, lead card and manager reply. Fictional data."
   },
   "links": {},
   "case": {
@@ -53,7 +53,7 @@
     ],
     "heroUrl": "Demonstration mockup · fictional data",
     "hero": {
-      "image": "../../../assets/school-consultant-bot/demo-flow.png",
+      "image": "../../../assets/school-consultant-bot/demo-flow-en.png",
       "label": "Demonstration mockup: consultation, lead card and human handoff",
       "size": "1672 × 941",
       "ratio": "16x9"
@@ -63,7 +63,7 @@
         "id": "task",
         "title": "The challenge",
         "big": "Help prospective students understand an online school’s courses, clarify their needs and hand the conversation to a person with the collected context — in the same Telegram chat.",
-        "note": "The image above is an AI-generated demonstration mockup with fictional data, illustrating code-supported workflows rather than a live screenshot. The Russian UI reflects the project’s demo knowledge base for a tarot school."
+        "note": "AI-generated demonstration with fictional data, translated into English for this case study. The bot’s current interface is Russian."
       },
       {
         "title": "From question to lead",
