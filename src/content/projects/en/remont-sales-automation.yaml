@@ -9,9 +9,9 @@ chips: [Lead intake, CRM, Telegram, n8n]
 tags: [Python, PostgreSQL, n8n, EspoCRM, Docker]
 preview:
   kind: shot
-  image: ../../../assets/remont-sales/interior-living.jpg
-  url: Demonstration illustration
-  alt: Interior illustration for a renovation company demo
+  image: ../../../assets/remont-sales/tilda-home.jpg
+  url: remont.stakko.online
+  alt: Homepage of the demonstration renovation website on Tilda
 links:
   demo: https://remont.stakko.online
   github: https://github.com/shelexm/remont-sales-automation
@@ -27,13 +27,13 @@ case:
     - { k: Channels, v: Tilda · CRM · Telegram }
     - { k: Foundation, v: Python · PostgreSQL · n8n }
     - { k: Status, v: Demonstration project }
-  heroUrl: Demonstration project · illustration
-  hero: { image: ../../../assets/remont-sales/interior-living.jpg, label: Interior illustration for the demonstration project, size: 1200 × 675, ratio: 16x9 }
+  heroUrl: remont.stakko.online · demonstration website
+  hero: { image: ../../../assets/remont-sales/tilda-home.jpg, label: Homepage of the demonstration Tilda website, size: 1280 × 720, ratio: 16x9 }
   sections:
     - id: task
       title: The challenge
       big: Help a renovation company collect enquiries from its website, pass them to a manager and avoid losing leads when requests are repeated or an integration fails temporarily.
-      note: The interior image is a demonstration illustration, not a photograph of completed work.
+      note: The site and interior images are demonstration materials, not examples of completed renovation work.
     - title: The lead journey
       text: A Tilda form sends an HTTPS event to the receiver, which validates and saves it in PostgreSQL before acknowledging it. n8n starts queue processing on a schedule; a separate service synchronises the lead with the CRM and sends notifications.
       flow:
@@ -46,8 +46,16 @@ case:
       gallery:
         layout: single
         shots:
-          - { image: ../../../assets/remont-sales/workflow-en.png, label: Diagram of the three nodes in the exported n8n workflow, size: 1600 × 900, ratio: 16x9 }
-      note: This diagram is based on the exported workflow; it is not a screenshot of the n8n editor.
+          - { image: ../../../assets/remont-sales/n8n-workflow.jpg, label: Actual n8n editor with the three imported workflow nodes, size: 1280 × 720, ratio: 16x9 }
+      note: This screenshot shows a separate n8n instance with the exported workflow imported. Database credentials and lead data were deliberately omitted, so the PostgreSQL nodes display warnings and the workflow is not running in this copy.
+    - title: Inside the workflow
+      text: The schedule starts the process every minute. One PostgreSQL node claims an available event from the queue; the other passes its identifier and lease token to the processing function. Screenshots show the actual settings of the imported workflow with no secrets.
+      gallery:
+        layout: gal3
+        shots:
+          - { image: ../../../assets/remont-sales/n8n-schedule.jpg, label: Schedule configured to run every minute, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/n8n-claim.jpg, label: Query to claim a lead from the queue, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/n8n-process.jpg, label: Lead processing with query parameters, size: 1280 × 720, ratio: 16x9 }
     - title: Processing and follow-up
       panels:
         - title: Lead
@@ -63,6 +71,13 @@ case:
     - title: Verification
       text: The end-to-end path was tested with fictional data through the published Tilda form, local receiver, n8n, EspoCRM and Telegram. Receipt of a notification and a separate reminder was confirmed manually. CI also runs automated tests and an n8n workflow smoke test; external services are mocked in tests.
       note: Some early test notifications have an uncertain status after network failures; automatic delivery is not guaranteed in every situation.
+    - title: Form and CRM
+      text: The demo form collects renovation details. EspoCRM shows test opportunities created on the local demo; amounts and enquiries are fictional and do not represent commercial results.
+      gallery:
+        layout: gal2
+        shots:
+          - { image: ../../../assets/remont-sales/tilda-form.jpg, label: Lead form on the demonstration Tilda website, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/espocrm-opportunities.jpg, label: Test opportunities in local EspoCRM, size: 1269 × 714, ratio: 16x9 }
     - title: CRM and demo boundaries
       text: The free local demo uses EspoCRM. An experimental Bitrix24 adapter has been tested against API test doubles; a real Bitrix24 account has not yet been tested.
       list:
