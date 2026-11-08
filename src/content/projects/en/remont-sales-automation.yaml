@@ -43,6 +43,11 @@ case:
           - { b: n8n, d: Scheduled processing of the persisted queue }
         result: { b: CRM and Telegram, d: 'Opportunity, notification and overdue follow-up' }
       after: The exported workflow is versioned in the repository. Validation and integrations also use separate services and database functions, rather than n8n nodes alone.
+      gallery:
+        layout: single
+        shots:
+          - { image: ../../../assets/remont-sales/workflow-en.png, label: Diagram of the three nodes in the exported n8n workflow, size: 1600 × 900, ratio: 16x9 }
+      note: This diagram is based on the exported workflow; it is not a screenshot of the n8n editor.
     - title: Processing and follow-up
       panels:
         - title: Lead

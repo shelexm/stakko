@@ -43,6 +43,11 @@ case:
           - { b: n8n, d: Запуск обработки сохранённой очереди }
         result: { b: CRM и Telegram, d: 'Сделка, уведомление и контроль просрочки' }
       after: Экспорт workflow хранится в репозитории. Проверка и интеграции реализованы отдельными сервисами и функциями базы, а не только узлами n8n.
+      gallery:
+        layout: single
+        shots:
+          - { image: ../../../assets/remont-sales/workflow-ru.png, label: Схема трёх узлов экспортированного workflow n8n, size: 1600 × 900, ratio: 16x9 }
+      note: Это схема по экспорту workflow, а не скриншот редактора n8n.
     - title: Обработка и контроль
       panels:
         - title: Заявка
