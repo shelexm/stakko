@@ -1,0 +1,79 @@
+lang: en
+order: 4
+title: Renovation lead automation
+short: Lead automation
+category: Sales automation · CRM
+role: Architecture, backend & integrations
+description: A renovation lead demo connecting a Tilda form to a CRM and manager notifications in Telegram.
+chips: [Lead intake, CRM, Telegram, n8n]
+tags: [Python, PostgreSQL, n8n, EspoCRM, Docker]
+preview:
+  kind: shot
+  image: ../../../assets/remont-sales/interior-living.jpg
+  url: Demonstration illustration
+  alt: Interior illustration for a renovation company demo
+links:
+  demo: https://remont.stakko.online
+  github: https://github.com/shelexm/remont-sales-automation
+case:
+  seoTitle: Renovation lead automation · Case study · STAKKO
+  seoDescription: A demonstration of Tilda lead processing through n8n to CRM and Telegram.
+  eyebrow: CASE 04 · SALES AUTOMATION
+  titleA: Leads
+  titleB: under control
+  lead: A renovation lead demo connecting a Tilda form to a CRM and manager notifications in Telegram.
+  meta:
+    - { k: Role, v: Architecture · Backend · integrations }
+    - { k: Channels, v: Tilda · CRM · Telegram }
+    - { k: Foundation, v: Python · PostgreSQL · n8n }
+    - { k: Status, v: Demonstration project }
+  heroUrl: Demonstration project · illustration
+  hero: { image: ../../../assets/remont-sales/interior-living.jpg, label: Interior illustration for the demonstration project, size: 1200 × 675, ratio: 16x9 }
+  sections:
+    - id: task
+      title: The challenge
+      big: Help a renovation company collect enquiries from its website, pass them to a manager and avoid losing leads when requests are repeated or an integration fails temporarily.
+      note: The interior image is a demonstration illustration, not a photograph of completed work.
+    - title: The lead journey
+      text: A Tilda form sends an HTTPS event to the receiver, which validates and saves it in PostgreSQL before acknowledging it. n8n starts queue processing on a schedule; a separate service synchronises the lead with the CRM and sends notifications.
+      flow:
+        steps:
+          - { b: Tilda, d: 'Form with renovation type, area and budget' }
+          - { b: Receiver and PostgreSQL, d: 'Validation, storage and duplicate-delivery protection' }
+          - { b: n8n, d: Scheduled processing of the persisted queue }
+        result: { b: CRM and Telegram, d: 'Opportunity, notification and overdue follow-up' }
+      after: The exported workflow is versioned in the repository. Validation and integrations also use separate services and database functions, rather than n8n nodes alone.
+    - title: Processing and follow-up
+      panels:
+        - title: Lead
+          items:
+            - Required-field validation and phone number normalisation
+            - Idempotent webhook handling and budget classification
+            - Controlled retries and technical event logging
+        - title: Manager
+          items:
+            - Contact and opportunity creation in demo EspoCRM
+            - Telegram lead notifications and overdue reminders
+            - Local queue diagnostics and accepted-lead reporting
+    - title: Verification
+      text: The end-to-end path was tested with fictional data through the published Tilda form, local receiver, n8n, EspoCRM and Telegram. Receipt of a notification and a separate reminder was confirmed manually. CI also runs automated tests and an n8n workflow smoke test; external services are mocked in tests.
+      note: Some early test notifications have an uncertain status after network failures; automatic delivery is not guaranteed in every situation.
+    - title: CRM and demo boundaries
+      text: The free local demo uses EspoCRM. An experimental Bitrix24 adapter has been tested against API test doubles; a real Bitrix24 account has not yet been tested.
+      list:
+        - The demo runs locally in Docker; the temporary HTTPS tunnel depends on the computer being online.
+        - The public form is for fictional data only.
+        - Real client use requires persistent hosting, access controls and verified backup storage.
+    - id: stack
+      title: Technology
+      stack:
+        - { title: Intake and data, tags: [Python, PostgreSQL, SQLAlchemy, Alembic] }
+        - { title: Automation, tags: [n8n, Docker Compose] }
+        - { title: Integrations, tags: [Tilda, EspoCRM, Telegram Bot API] }
+        - { title: Quality, tags: [pytest, GitHub Actions] }
+    - id: links
+      title: Explore the project
+      links:
+        - { k: Demo, b: Liniya Doma, d: Form for fictional test data; submission depends on the local demo being online., href: 'https://remont.stakko.online' }
+        - { k: Source, b: GitHub, d: 'n8n workflow, receiver code, documentation and tests.', href: 'https://github.com/shelexm/remont-sales-automation' }
+        - { k: Contact, b: Telegram · @shelexm, d: Lead automation and CRM integrations., href: 'https://t.me/shelexm' }
