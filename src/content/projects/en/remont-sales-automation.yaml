@@ -4,7 +4,7 @@ title: Renovation lead automation
 short: Lead automation
 category: Sales automation · CRM
 role: Architecture, backend & integrations
-description: A renovation lead demo connecting a Tilda form to a CRM and manager notifications in Telegram.
+description: A renovation lead demo connecting a website to a CRM and Telegram notifications, with a verified Tilda integration.
 chips: [Lead intake, CRM, Telegram, n8n]
 tags: [Python, PostgreSQL, n8n, EspoCRM, Docker]
 preview:
@@ -13,15 +13,15 @@ preview:
   url: remont.stakko.online
   alt: Homepage of the demonstration renovation website on Tilda
 links:
-  demo: https://remont.stakko.online
+  demo: https://shelexm.github.io/remont-sales-automation/
   github: https://github.com/shelexm/remont-sales-automation
 case:
   seoTitle: Renovation lead automation · Case study · STAKKO
-  seoDescription: A demonstration of Tilda lead processing through n8n to CRM and Telegram.
+  seoDescription: A demonstration of website lead processing through n8n to CRM and Telegram.
   eyebrow: CASE 04 · SALES AUTOMATION
   titleA: Leads
   titleB: under control
-  lead: A renovation lead demo connecting a Tilda form to a CRM and manager notifications in Telegram.
+  lead: A renovation lead demo connecting a website to a CRM and Telegram notifications, with a verified Tilda integration.
   meta:
     - { k: Role, v: Architecture · Backend · integrations }
     - { k: Channels, v: Tilda · CRM · Telegram }
@@ -33,12 +33,12 @@ case:
     - id: task
       title: The challenge
       big: Help a renovation company collect enquiries from its website, pass them to a manager and avoid losing leads when requests are repeated or an integration fails temporarily.
-      note: The site and interior images are demonstration materials, not examples of completed renovation work.
+      note: Screenshots show the original Tilda version. The demo link opens an independent GitHub Pages site with a test form. Interior images are illustrative, not photographs of completed work.
     - title: The lead journey
-      text: A Tilda form sends an HTTPS event to the receiver, which validates and saves it in PostgreSQL before acknowledging it. n8n starts queue processing on a schedule; a separate service synchronises the lead with the CRM and sends notifications.
+      text: The original Tilda form sent HTTPS events to the receiver. In the independent GitHub Pages demo, a limited gateway forwards fictional test data. The receiver validates and saves the event in PostgreSQL before acknowledging it. n8n starts queue processing on a schedule; a separate service synchronises the lead with the CRM and sends notifications.
       flow:
         steps:
-          - { b: Tilda, d: 'Form with renovation type, area and budget' }
+          - { b: Website, d: 'Tilda or the GitHub Pages test form' }
           - { b: Receiver and PostgreSQL, d: 'Validation, storage and duplicate-delivery protection' }
           - { b: n8n, d: Scheduled processing of the persisted queue }
         result: { b: CRM and Telegram, d: 'Opportunity, notification and overdue follow-up' }
@@ -81,7 +81,7 @@ case:
     - title: CRM and demo boundaries
       text: The free local demo uses EspoCRM. An experimental Bitrix24 adapter has been tested against API test doubles; a real Bitrix24 account has not yet been tested.
       list:
-        - The demo runs locally in Docker; the temporary HTTPS tunnel depends on the computer being online.
+        - Demo processing runs locally in Docker; the temporary HTTPS tunnel depends on the computer being online. The GitHub Pages site is hosted separately.
         - The public form is for fictional data only.
         - Real client use requires persistent hosting, access controls and verified backup storage.
     - id: stack
@@ -94,6 +94,6 @@ case:
     - id: links
       title: Explore the project
       links:
-        - { k: Demo, b: Liniya Doma, d: Form for fictional test data; submission depends on the local demo being online., href: 'https://remont.stakko.online' }
+        - { k: Demo, b: Liniya Doma, d: Form for fictional test data; submission depends on the local demo being online., href: 'https://shelexm.github.io/remont-sales-automation/' }
         - { k: Source, b: GitHub, d: 'n8n workflow, receiver code, documentation and tests.', href: 'https://github.com/shelexm/remont-sales-automation' }
         - { k: Contact, b: Telegram · @shelexm, d: Lead automation and CRM integrations., href: 'https://t.me/shelexm' }
