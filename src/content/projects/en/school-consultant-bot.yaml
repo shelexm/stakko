@@ -1,6 +1,6 @@
 {
   "lang": "en",
-  "order": 2,
+  "order": 3,
   "title": "School Consultant Bot",
   "short": "School Bot",
   "category": "Telegram bot · AI",
@@ -21,15 +21,15 @@
   ],
   "preview": {
     "kind": "shot",
-    "image": "../../../assets/school-consultant-bot/dialogue-01.jpg",
-    "url": "Telegram · real workflow",
-    "alt": "Part of a real AI consultation, with personal details hidden"
+    "image": "../../../assets/school-consultant-bot/demo-flow-en.png",
+    "url": "Demonstration mockup",
+    "alt": "Demonstration mockup of consultation and lead handoff"
   },
   "links": {},
   "case": {
     "seoTitle": "School Consultant Bot · Case study · STAKKO",
     "seoDescription": "An AI consultant for an online school in Telegram: knowledge-based answers, lead qualification and contextual handoff to a human manager. Integrations with amoCRM and Bitrix24.",
-    "eyebrow": "CASE 02 · TELEGRAM AI CONSULTANT",
+    "eyebrow": "CASE 03 · TELEGRAM AI CONSULTANT",
     "titleA": "School",
     "titleB": "Consultant Bot",
     "lead": "An AI consultant for an online school in Telegram: knowledge-based answers, lead qualification and contextual handoff to a human manager. Integrations with amoCRM and Bitrix24.",
@@ -51,11 +51,11 @@
         "v": "Russian"
       }
     ],
-    "heroUrl": "Telegram · real workflow",
+    "heroUrl": "Demonstration mockup",
     "hero": {
-      "image": "../../../assets/school-consultant-bot/dialogue-01.jpg",
-      "label": "Real conversation and lead card, with personal details hidden",
-      "size": "1600 × 900",
+      "image": "../../../assets/school-consultant-bot/demo-flow-en.png",
+      "label": "Demonstration mockup of consultation and lead handoff",
+      "size": "1672 × 941",
       "ratio": "16x9"
     },
     "sections": [
@@ -63,7 +63,7 @@
         "id": "task",
         "title": "The challenge",
         "big": "Help prospective students understand an online school’s courses, clarify their needs and hand the conversation to a person with the collected context — in the same Telegram chat.",
-        "note": "Below are real screenshots of the Russian-language bot, divided into steps. The client’s name, phone, Telegram handle and avatar are hidden."
+        "note": "The cover is a demonstration mockup. The following images are English translations recreated from real screenshots of the Russian-language bot; personal details are hidden."
       },
       {
         "title": "From question to lead",
@@ -96,9 +96,9 @@
           "layout": "single",
           "shots": [
             {
-              "image": "../../../assets/school-consultant-bot/dialogue-01.jpg",
-              "label": "Introduction and request · real screenshot",
-              "size": "571 × 360",
+              "image": "../../../assets/school-consultant-bot/dialogue-en-01.webp",
+              "label": "Introduction and request · translated from the original screenshot",
+              "size": "1580 × 995",
               "ratio": "16x10"
             }
           ]
@@ -111,9 +111,9 @@
           "layout": "single",
           "shots": [
             {
-              "image": "../../../assets/school-consultant-bot/dialogue-02.jpg",
-              "label": "Choosing a course · real screenshot",
-              "size": "571 × 340",
+              "image": "../../../assets/school-consultant-bot/dialogue-en-02.webp",
+              "label": "Choosing a course · translated from the original screenshot",
+              "size": "1626 × 967",
               "ratio": "16x9"
             }
           ]
@@ -126,9 +126,9 @@
           "layout": "single",
           "shots": [
             {
-              "image": "../../../assets/school-consultant-bot/dialogue-03.jpg",
-              "label": "Ready to enrol · real screenshot",
-              "size": "571 × 230",
+              "image": "../../../assets/school-consultant-bot/dialogue-en-03.webp",
+              "label": "Ready to enrol · translated from the original screenshot",
+              "size": "1977 × 795",
               "ratio": "16x9"
             }
           ]
@@ -141,9 +141,9 @@
           "layout": "single",
           "shots": [
             {
-              "image": "../../../assets/school-consultant-bot/dialogue-04.jpg",
-              "label": "Contact handoff · real screenshot",
-              "size": "571 × 350",
+              "image": "../../../assets/school-consultant-bot/dialogue-en-04.webp",
+              "label": "Contact handoff · translated from the original screenshot",
+              "size": "1602 × 981",
               "ratio": "16x10"
             }
           ]
@@ -156,9 +156,9 @@
           "layout": "single",
           "shots": [
             {
-              "image": "../../../assets/school-consultant-bot/real-lead.jpg",
-              "label": "Manager’s lead card · real screenshot",
-              "size": "627 × 643",
+              "image": "../../../assets/school-consultant-bot/lead-en.webp",
+              "label": "Manager’s lead card · translated from the original screenshot",
+              "size": "1238 × 1271",
               "ratio": "1x1"
             }
           ]
@@ -283,6 +283,6 @@
         ]
       }
     ],
-    "showHero": false
+    "showHero": true
   }
 }
