@@ -1,5 +1,5 @@
 lang: en
-order: 4
+order: 2
 title: Renovation lead automation
 short: Lead automation
 category: Sales automation · CRM
@@ -18,7 +18,7 @@ links:
 case:
   seoTitle: Renovation lead automation · Case study · STAKKO
   seoDescription: A demonstration of website lead processing through n8n to CRM and Telegram.
-  eyebrow: CASE 03 · SALES AUTOMATION
+  eyebrow: CASE 02 · SALES AUTOMATION
   titleA: Leads
   titleB: under control
   lead: A renovation lead demo connecting a website to a CRM and Telegram notifications, with a verified Tilda integration.
