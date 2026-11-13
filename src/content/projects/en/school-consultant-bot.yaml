@@ -21,9 +21,9 @@
   ],
   "preview": {
     "kind": "shot",
-    "image": "../../../assets/school-consultant-bot/demo-flow-en.png",
-    "url": "Demonstration mockup",
-    "alt": "English demonstration mockup: consultation, lead card and manager reply. Fictional data."
+    "image": "../../../assets/school-consultant-bot/real-overview.jpg",
+    "url": "Telegram · real workflow",
+    "alt": "Real AI consultation and manager lead card, with personal details hidden."
   },
   "links": {},
   "case": {
@@ -51,11 +51,11 @@
         "v": "Russian"
       }
     ],
-    "heroUrl": "Demonstration mockup · fictional data",
+    "heroUrl": "Telegram · real workflow",
     "hero": {
-      "image": "../../../assets/school-consultant-bot/demo-flow-en.png",
-      "label": "Demonstration mockup: consultation, lead card and human handoff",
-      "size": "1672 × 941",
+      "image": "../../../assets/school-consultant-bot/real-overview.jpg",
+      "label": "Real conversation and lead card, with personal details hidden",
+      "size": "1600 × 900",
       "ratio": "16x9"
     },
     "sections": [
@@ -63,7 +63,7 @@
         "id": "task",
         "title": "The challenge",
         "big": "Help prospective students understand an online school’s courses, clarify their needs and hand the conversation to a person with the collected context — in the same Telegram chat.",
-        "note": "AI-generated demonstration with fictional data, translated into English for this case study. The bot’s current interface is Russian."
+        "note": "These are real screenshots of the Russian-language bot. The client’s name, phone number, Telegram handle and avatar are hidden. The knowledge base contains demonstration data for a tarot school."
       },
       {
         "title": "From question to lead",
@@ -88,6 +88,27 @@
           }
         },
         "after": "The client profile and message history are stored in the database. Handoff switches the conversation into manager mode."
+      },
+      {
+        "title": "A real interaction",
+        "text": "The consultant asks about experience, goals and study time, suggests a course and hands the lead to a manager. Open the screenshots to inspect the original Russian-language conversation and lead card.",
+        "gallery": {
+          "layout": "gal2",
+          "shots": [
+            {
+              "image": "../../../assets/school-consultant-bot/real-conversation.jpg",
+              "label": "Real consultant conversation, with personal details hidden",
+              "size": "571 × 1280",
+              "ratio": "9x19"
+            },
+            {
+              "image": "../../../assets/school-consultant-bot/real-lead.jpg",
+              "label": "Real manager lead card, with personal details hidden",
+              "size": "627 × 643",
+              "ratio": "1x1"
+            }
+          ]
+        }
       },
       {
         "title": "AI and consultation boundaries",

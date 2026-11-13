@@ -1,0 +1,100 @@
+lang: en
+order: 4
+title: Renovation lead automation
+short: Lead automation
+category: Sales automation · CRM
+role: Architecture, backend & integrations
+description: A renovation lead demo connecting a website to a CRM and Telegram notifications, with a verified Tilda integration.
+chips: [Lead intake, CRM, Telegram, n8n]
+tags: [Python, PostgreSQL, n8n, EspoCRM, Docker]
+preview:
+  kind: shot
+  image: ../../../assets/remont-sales/tilda-home.jpg
+  url: Tilda · original demo
+  alt: Homepage of the demonstration renovation website on Tilda
+links:
+  demo: https://remont.stakko.online/
+  github: https://github.com/shelexm/remont-sales-automation
+case:
+  seoTitle: Renovation lead automation · Case study · STAKKO
+  seoDescription: A demonstration of website lead processing through n8n to CRM and Telegram.
+  eyebrow: CASE 03 · SALES AUTOMATION
+  titleA: Leads
+  titleB: under control
+  lead: A renovation lead demo connecting a website to a CRM and Telegram notifications, with a verified Tilda integration.
+  meta:
+    - { k: Role, v: Architecture · Backend · integrations }
+    - { k: Channels, v: Tilda · CRM · Telegram }
+    - { k: Foundation, v: Python · PostgreSQL · n8n }
+    - { k: Status, v: Demonstration project }
+  heroUrl: Tilda · original demo
+  hero: { image: ../../../assets/remont-sales/tilda-home.jpg, label: Homepage of the demonstration Tilda website, size: 1280 × 720, ratio: 16x9 }
+  sections:
+    - id: task
+      title: The challenge
+      big: Help a renovation company collect enquiries from its website, pass them to a manager and avoid losing leads when requests are repeated or an integration fails temporarily.
+      note: Screenshots show the original Tilda version. The demo link opens an independent GitHub Pages site with a test form. Interior images are illustrative, not photographs of completed work.
+    - title: The lead journey
+      text: The original Tilda form sent HTTPS events to the receiver. In the independent GitHub Pages demo, a limited gateway forwards fictional test data. The receiver validates and saves the event in PostgreSQL before acknowledging it. n8n starts queue processing on a schedule; a separate service synchronises the lead with the CRM and sends notifications.
+      flow:
+        steps:
+          - { b: Website, d: 'Tilda or the GitHub Pages test form' }
+          - { b: Receiver and PostgreSQL, d: 'Validation, storage and duplicate-delivery protection' }
+          - { b: n8n, d: Scheduled processing of the persisted queue }
+        result: { b: CRM and Telegram, d: 'Opportunity, notification and overdue follow-up' }
+      after: The exported workflow is versioned in the repository. Validation and integrations also use separate services and database functions, rather than n8n nodes alone.
+      gallery:
+        layout: single
+        shots:
+          - { image: ../../../assets/remont-sales/n8n-workflow.jpg, label: Actual n8n editor with the three imported workflow nodes, size: 1280 × 720, ratio: 16x9 }
+      note: This screenshot shows a separate n8n instance with the exported workflow imported. Database credentials and lead data were deliberately omitted, so the PostgreSQL nodes display warnings and the workflow is not running in this copy.
+    - title: Inside the workflow
+      text: The schedule starts the process every minute. One PostgreSQL node claims an available event from the queue; the other passes its identifier and lease token to the processing function. Screenshots show the actual settings of the imported workflow with no secrets.
+      gallery:
+        layout: gal3
+        shots:
+          - { image: ../../../assets/remont-sales/n8n-schedule.jpg, label: Schedule configured to run every minute, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/n8n-claim.jpg, label: Query to claim a lead from the queue, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/n8n-process.jpg, label: Lead processing with query parameters, size: 1280 × 720, ratio: 16x9 }
+    - title: Processing and follow-up
+      panels:
+        - title: Lead
+          items:
+            - Required-field validation and phone number normalisation
+            - Idempotent webhook handling and budget classification
+            - Controlled retries and technical event logging
+        - title: Manager
+          items:
+            - Contact and opportunity creation in demo EspoCRM
+            - Telegram lead notifications and overdue reminders
+            - Local queue diagnostics and accepted-lead reporting
+    - title: Verification
+      text: The Tilda-to-EspoCRM and Telegram path was tested with fictional data; notification and reminder receipt were confirmed manually. The public GitHub Pages form was tested separately with EspoCRM and Telegram. In an isolated environment, a lead passed through the receiver, a one-off n8n workflow, a real Bitrix24 portal and the Telegram API. CI also runs automated tests and a workflow smoke test, with external services mocked.
+      note: Some early test notifications have an uncertain status after network failures; automatic delivery is not guaranteed in every situation.
+    - title: Form and CRM
+      text: The original Tilda form and the independent GitHub Pages form show two intake options. EspoCRM shows test opportunities created on the local demo; amounts and enquiries are fictional and do not represent commercial results.
+      gallery:
+        layout: gal3
+        shots:
+          - { image: ../../../assets/remont-sales/pages-form.jpg, label: GitHub Pages form after accepting a test lead, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/tilda-form.jpg, label: Lead form on the demonstration Tilda website, size: 1280 × 720, ratio: 16x9 }
+          - { image: ../../../assets/remont-sales/espocrm-opportunities.jpg, label: Test opportunities in local EspoCRM, size: 1269 × 714, ratio: 16x9 }
+    - title: CRM and demo boundaries
+      text: "The free local demo uses EspoCRM. The experimental Bitrix24 adapter was separately tested on a real portal: a test contact and deal were created and the deal stage was read. A Bitrix24 subscription was required for the webhook on the tested account; the public form remains connected to EspoCRM."
+      list:
+        - Demo processing runs locally in Docker; the temporary HTTPS tunnel depends on the computer being online. The GitHub Pages site is hosted separately.
+        - The public form is for fictional data only.
+        - Real client use requires persistent hosting, access controls and verified backup storage.
+    - id: stack
+      title: Technology
+      stack:
+        - { title: Intake and data, tags: [Python, PostgreSQL, SQLAlchemy, Alembic] }
+        - { title: Automation, tags: [n8n, Docker Compose] }
+        - { title: Integrations, tags: [Tilda, EspoCRM, Bitrix24, Telegram Bot API] }
+        - { title: Quality, tags: [unittest, GitHub Actions] }
+    - id: links
+      title: Explore the project
+      links:
+        - { k: Demo, b: Liniya Doma, d: Form for fictional test data; submission depends on the local demo being online., href: 'https://remont.stakko.online/' }
+        - { k: Source, b: GitHub, d: 'n8n workflow, receiver code, documentation and tests.', href: 'https://github.com/shelexm/remont-sales-automation' }
+        - { k: Contact, b: Telegram · @shelexm, d: Lead automation and CRM integrations., href: 'https://t.me/shelexm' }

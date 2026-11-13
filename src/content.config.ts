@@ -12,7 +12,7 @@ const projects = defineCollection({
       image: image().optional(),
       label: z.string(),
       size: z.string(),
-      ratio: z.enum(['16x9', '16x10', '9x19']),
+      ratio: z.enum(['16x9', '16x10', '9x19', '1x1']),
     });
     const node = z.object({ k: z.string(), b: z.string(), s: z.string() });
 
