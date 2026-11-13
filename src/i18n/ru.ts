@@ -77,7 +77,6 @@ export const ru = {
     sub: 'Только то, что используется в реальных проектах и подтверждается кодом.',
     sources: [
       { label: 'Код VÉLOX', href: REPOS.velox },
-      { label: 'Код English Hub', href: REPOS.englishHub },
     ],
     groups: [
       { title: 'Frontend', tags: ['React', 'TypeScript', 'Tailwind CSS', 'JavaScript', 'Jinja2'] },

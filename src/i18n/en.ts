@@ -78,7 +78,6 @@ export const en: Dict = {
     sub: 'Only what’s used in real projects and backed by code.',
     sources: [
       { label: 'VÉLOX source', href: REPOS.velox },
-      { label: 'English Hub source', href: REPOS.englishHub },
     ],
     groups: [
       { title: 'Frontend', tags: ['React', 'TypeScript', 'Tailwind CSS', 'JavaScript', 'Jinja2'] },

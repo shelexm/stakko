@@ -10,5 +10,4 @@ export const CONTACTS = {
 
 export const REPOS = {
   velox: 'https://github.com/shelexm/velox-detailing',
-  englishHub: 'https://github.com/shelexm/english-hub',
 };

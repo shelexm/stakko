@@ -32,6 +32,7 @@
 .r-16x10 { aspect-ratio: 16/10; }
 .r-16x9 { aspect-ratio: 16/9; }
 .r-9x19 { aspect-ratio: 9/19.5; }
+.r-1x1 { aspect-ratio: 1; }
 .is-phone .shot-frame { border-radius: 30px; padding: 6px; background: var(--bg); border-color: rgba(140,165,255,.26); }
 .is-phone .ph, .is-phone img { border-radius: 24px; }
 .shot-cap { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 14px; color: var(--tx2); }
