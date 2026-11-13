@@ -33,7 +33,7 @@ const ui = d.caseUi;
 const home = `/${lang}/`;
 
 // Lightbox order: the hero screenshot, then every section's screenshots top to bottom.
-let next = 1;
+let next = c.showHero ? 1 : 0;
 const shotStarts = c.sections.map((s) => {
   const start = next;
   next += s.gallery?.shots.length ?? 0;
@@ -66,9 +66,9 @@ const shotStarts = c.sections.map((s) => {
       </div>
     </section>
 
-    <div class="wrap hero-shot reveal">
+    {c.showHero && <div class="wrap hero-shot reveal">
       <Shot shot={c.hero} index={0} openLabel={ui.open} replaceText={ui.replace} browserUrl={c.heroUrl} caption={false} eager />
-    </div>
+    </div>}
 
     {c.sections.map((s, i) => (
       <CaseSection section={s} num={i + 1} shotStart={shotStarts[i]} openLabel={ui.open} replaceText={ui.replace} />

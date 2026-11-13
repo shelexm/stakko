@@ -76,6 +76,7 @@ const projects = defineCollection({
           meta: z.array(z.object({ k: z.string(), v: z.string() })),
           heroUrl: z.string(),
           hero: shot,
+          showHero: z.boolean().default(true),
           sections: z.array(section),
         })
         .optional(),
