@@ -21,9 +21,9 @@
   ],
   "preview": {
     "kind": "shot",
-    "image": "../../../assets/school-consultant-bot/real-overview.jpg",
+    "image": "../../../assets/school-consultant-bot/dialogue-01.jpg",
     "url": "Telegram · real workflow",
-    "alt": "Real AI consultation and manager lead card, with personal details hidden."
+    "alt": "Part of a real AI consultation, with personal details hidden"
   },
   "links": {},
   "case": {
@@ -53,7 +53,7 @@
     ],
     "heroUrl": "Telegram · real workflow",
     "hero": {
-      "image": "../../../assets/school-consultant-bot/real-overview.jpg",
+      "image": "../../../assets/school-consultant-bot/dialogue-01.jpg",
       "label": "Real conversation and lead card, with personal details hidden",
       "size": "1600 × 900",
       "ratio": "16x9"
@@ -63,7 +63,7 @@
         "id": "task",
         "title": "The challenge",
         "big": "Help prospective students understand an online school’s courses, clarify their needs and hand the conversation to a person with the collected context — in the same Telegram chat.",
-        "note": "These are real screenshots of the Russian-language bot. The client’s name, phone number, Telegram handle and avatar are hidden. The knowledge base contains demonstration data for a tarot school."
+        "note": "Below are real screenshots of the Russian-language bot, divided into steps. The client’s name, phone, Telegram handle and avatar are hidden."
       },
       {
         "title": "From question to lead",
@@ -90,20 +90,74 @@
         "after": "The client profile and message history are stored in the database. Handoff switches the conversation into manager mode."
       },
       {
-        "title": "A real interaction",
-        "text": "The consultant asks about experience, goals and study time, suggests a course and hands the lead to a manager. Open the screenshots to inspect the original Russian-language conversation and lead card.",
+        "title": "Introduction and request",
+        "text": "The assistant asks about the student’s request and experience.",
         "gallery": {
-          "layout": "gal2",
+          "layout": "single",
           "shots": [
             {
-              "image": "../../../assets/school-consultant-bot/real-conversation.jpg",
-              "label": "Real consultant conversation, with personal details hidden",
-              "size": "571 × 1280",
-              "ratio": "9x19"
-            },
+              "image": "../../../assets/school-consultant-bot/dialogue-01.jpg",
+              "label": "Introduction and request · real screenshot",
+              "size": "571 × 360",
+              "ratio": "16x10"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Choosing a course",
+        "text": "It matches the course to the student’s goal and asks about available study time.",
+        "gallery": {
+          "layout": "single",
+          "shots": [
+            {
+              "image": "../../../assets/school-consultant-bot/dialogue-02.jpg",
+              "label": "Choosing a course · real screenshot",
+              "size": "571 × 340",
+              "ratio": "16x9"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Ready to enrol",
+        "text": "It explains the course and offers the next step.",
+        "gallery": {
+          "layout": "single",
+          "shots": [
+            {
+              "image": "../../../assets/school-consultant-bot/dialogue-03.jpg",
+              "label": "Ready to enrol · real screenshot",
+              "size": "571 × 230",
+              "ratio": "16x9"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Contact handoff",
+        "text": "The client shares a contact in Telegram; personal details are hidden.",
+        "gallery": {
+          "layout": "single",
+          "shots": [
+            {
+              "image": "../../../assets/school-consultant-bot/dialogue-04.jpg",
+              "label": "Contact handoff · real screenshot",
+              "size": "571 × 350",
+              "ratio": "16x10"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Manager’s lead card",
+        "text": "The manager receives the context and can claim the enquiry.",
+        "gallery": {
+          "layout": "single",
+          "shots": [
             {
               "image": "../../../assets/school-consultant-bot/real-lead.jpg",
-              "label": "Real manager lead card, with personal details hidden",
+              "label": "Manager’s lead card · real screenshot",
               "size": "627 × 643",
               "ratio": "1x1"
             }
@@ -228,6 +282,7 @@
           }
         ]
       }
-    ]
+    ],
+    "showHero": false
   }
 }
